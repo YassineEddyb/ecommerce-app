@@ -8,7 +8,6 @@ const productSchema = mongoose.Schema({
   userId: {
     type: mongoose.Schema.ObjectId,
     ref: "User",
-    required: [true, "this product has no user id"],
   },
   picture: {
     type: String,
@@ -27,7 +26,7 @@ const productSchema = mongoose.Schema({
     min: 1,
     max: 5,
   },
-  categories: [String]
+  categories: [String],
 });
 
 const Product = mongoose.model("Product", productSchema);

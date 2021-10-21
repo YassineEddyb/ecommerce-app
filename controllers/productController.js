@@ -1,17 +1,17 @@
 const Product = require("../models/ProductModel");
+const ApiError = require("../utills/api-error");
+const catchAsync = require("../utills/catchAsync");
 
 exports.getAllProducts = async (req, res, next) => {
-  console.log("all products");
-  res.status(200).json({ status: "success" });
+  const products = await Product.find();
+
+  if (!products[0]) return next(new ApiError("there is no porducts", 400));
+
+  res.status(200).json({ status: "success", products });
 };
 
-exports.postProduct = async (req, res, next) => {
-  try {
-    const product = await Product.create(req.body);
+exports.createProduct = catchAsync(async (req, res, next) => {
+  const product = await Product.create(req.body);
 
-    res.status(200).json({ status: "success", product });
-  } catch (err) {
-    res.status(400).json({ status: "failure" });
-    console.log(err);
-  }
-};
+  res.status(200).json({ status: "success", product });
+});

@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 const productRouter = require("./routes/productRoute");
+const errorHandler = require("./controllers/errorController");
 
 const app = express();
 
@@ -12,6 +13,9 @@ const db = process.env.MONGODB_URL;
 const port = process.env.PORT || 3000;
 
 app.use("/api/products", productRouter);
+
+// handling errors
+app.use(errorHandler);
 
 mongoose
   .connect(db)
