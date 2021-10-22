@@ -9,13 +9,9 @@ const productSchema = mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: "User",
   },
-  picture: {
-    type: String,
-  },
+  picture: String,
   images: [String],
-  desc: {
-    type: String,
-  },
+  desc: String,
   price: {
     type: Number,
     required: [true, "price is required"],
@@ -27,6 +23,7 @@ const productSchema = mongoose.Schema({
     max: 5,
   },
   categories: [String],
+  createdAt: { type: Date, default: Date.now() },
 });
 
 const Product = mongoose.model("Product", productSchema);

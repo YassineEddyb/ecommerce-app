@@ -3,9 +3,12 @@ const { validationResult } = require("express-validator");
 const Product = require("../models/ProductModel");
 const ApiError = require("../utills/api-error");
 const catchAsync = require("../utills/catchAsync");
+const ApiFeatures = require("../utills/api-features");
 
 exports.getAllProducts = async (req, res, next) => {
-  const products = await Product.find();
+  const filter = new ApiFeatures(Product.find(), req.query).category();
+
+  const products = await filter.obj;
 
   if (!products[0]) return next(new ApiError("there is no porducts", 400));
 
@@ -55,6 +58,12 @@ exports.deleteProduct = catchAsync(async (req, res, next) => {
   if (!product) {
     return next(new ApiError("there is no product with that id", 404));
   }
+
+  res.status(200).json({ status: "success" });
+});
+
+exports.deleteAll = catchAsync(async (req, res, next) => {
+  await Product.deleteMany();
 
   res.status(200).json({ status: "success" });
 });

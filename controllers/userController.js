@@ -1,8 +1,9 @@
+const { validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs");
+
 const User = require("../models/UserModel");
 const ApiError = require("../utills/api-error");
-const bcrypt = require("bcryptjs");
 const catchAsync = require("../utills/catchAsync");
-const { validationResult } = require("express-validator");
 
 exports.createUser = catchAsync(async (req, res, next) => {
   const errors = validationResult(req);
