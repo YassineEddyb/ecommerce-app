@@ -2,7 +2,8 @@ const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-const productRouter = require("./routes/productRoute");
+const productRouter = require("./routes/productRoutes");
+const userRouter = require("./routes/userRoutes");
 const errorHandler = require("./controllers/errorController");
 
 const app = express();
@@ -13,6 +14,7 @@ const db = process.env.MONGODB_URL;
 const port = process.env.PORT || 3000;
 
 app.use("/api/products", productRouter);
+app.use("/api/users", userRouter)
 
 // handling errors
 app.use(errorHandler);
