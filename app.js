@@ -4,6 +4,7 @@ require("dotenv").config();
 
 const productRouter = require("./routes/productRoutes");
 const userRouter = require("./routes/userRoutes");
+const authRouter = require("./routes/authRoutes");
 const errorHandler = require("./controllers/errorController");
 
 const app = express();
@@ -13,8 +14,9 @@ app.use(express.json({ limit: "10kb" }));
 const db = process.env.MONGODB_URL;
 const port = process.env.PORT || 3000;
 
+app.use("/api/auth", authRouter);
 app.use("/api/products", productRouter);
-app.use("/api/users", userRouter)
+app.use("/api/users", userRouter);
 
 // handling errors
 app.use(errorHandler);
