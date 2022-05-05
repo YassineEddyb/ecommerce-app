@@ -1,0 +1,31 @@
+@import "../../main.scss";
+
+.header {
+  height: 80px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: $back-light;
+
+  nav {
+    display: flex;
+
+    .login {
+      height: 30px;
+      padding: 4px 10px;
+      text-decoration: none;
+      color: #111;
+      margin-left: 2rem;
+    }
+    .signup {
+      text-decoration: none;
+      height: 30px;
+      color: #fff;
+      background-color: #111;
+      padding: 4px 10px;
+      border-radius: 3px;
+    }
+  }
+}

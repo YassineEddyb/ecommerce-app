@@ -1,0 +1,72 @@
+@import "../../main.scss";
+
+.product {
+  width: 220px;
+  box-shadow: 1px 1px 40px 5px rgba(0, 0, 0, 0.11);
+  border-radius: 8px 8px 0 0;
+  .image {
+    border-radius: 8px 8px 0 0;
+    width: 220px;
+    height: 270px;
+    overflow: hidden;
+    position: relative;
+    &:hover {
+      .tools {
+        bottom: 0;
+      }
+    }
+    .tools {
+      cursor: pointer;
+      display: flex;
+      width: 100%;
+      height: 3rem;
+      align-items: center;
+      justify-content: space-between;
+      color: #eee;
+      position: absolute;
+      bottom: -3rem;
+      transition: 0.7s;
+      background-color: rgba(0, 0, 0, 0.7);
+      .add-to-cart {
+        width: calc(100% - 6rem);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        span {
+          font-size: 0.8rem;
+          margin-left: 6px;
+        }
+      }
+      .icon {
+        height: 100%;
+        width: 3rem;
+        display: grid;
+        place-items: center;
+        border-left: 1px solid #aaa;
+      }
+    }
+    img {
+      cursor: pointer;
+      max-width: 100%;
+    }
+  }
+  .title {
+    display: block;
+    margin: 10px 0;
+    color: $bold-text-color;
+    text-align: center;
+  }
+  .info {
+    font-size: 0.8rem;
+    margin-top: 4px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 7px;
+    color: $text-color;
+    margin-bottom: 5px;
+    .rating {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

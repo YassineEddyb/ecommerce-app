@@ -1,0 +1,58 @@
+@import "../../main.scss";
+
+.footer {
+  padding: 3rem;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 100px;
+  height: 400px;
+  background-color: $back-light;
+
+  .credintials {
+    width: 200px;
+    .logo {
+      margin-bottom: 1.5rem;
+    }
+    .info {
+      display: flex;
+      margin: 0.5rem 0;
+      align-items: center;
+      color: $main-color;
+      p {
+        color: $text-color;
+        margin-left: 8px;
+      }
+    }
+    .social-media {
+      margin-top: 2rem;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      li {
+        cursor: pointer;
+        font-size: 1.8rem;
+        color: $main-color;
+      }
+    }
+  }
+
+  .customer-services {
+    h6 {
+      font-size: 1.1rem;
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+    }
+    ul {
+      color: $text-color;
+      list-style: none;
+      li {
+        font-size: 0.9rem;
+        margin: 0.5rem 0;
+        cursor: pointer;
+        &:hover {
+          color: $main-color;
+        }
+      }
+    }
+  }
+}
