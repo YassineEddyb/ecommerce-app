@@ -9,23 +9,74 @@
   padding: 1rem 2rem;
   background-color: $back-light;
 
+  .logo {
+    color: $bold-text-color;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    h1 {
+      cursor: pointer;
+    }
+  }
+
   nav {
     display: flex;
-
-    .login {
-      height: 30px;
-      padding: 4px 10px;
-      text-decoration: none;
-      color: #111;
-      margin-left: 2rem;
+    .icon {
+      font-size: 1.8rem;
+      color: $bold-text-color;
+      display: flex;
+      align-items: center;
+      &:hover {
+        color: $main-color;
+      }
     }
-    .signup {
-      text-decoration: none;
-      height: 30px;
-      color: #fff;
-      background-color: #111;
-      padding: 4px 10px;
-      border-radius: 3px;
+
+    .icon.user {
+      position: relative;
+      &:hover {
+        .drop {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+      .drop {
+        background-color: white;
+        width: 150px;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        right: 0%;
+        top: 50px;
+        z-index: 1;
+        font-size: 0.8rem;
+        padding: 0.5rem;
+        border-radius: 5px;
+        box-shadow: 1px 1px 40px 5px rgba(0, 0, 0, 0.11);
+        opacity: 0;
+        visibility: hidden;
+
+        .auth {
+          text-decoration: none;
+          color: $bold-text-color;
+          margin: 0.5rem;
+          display: flex;
+          align-items: center;
+          .icon {
+            font-size: 1.3rem;
+            margin-right: 10px;
+          }
+          &:hover {
+            color: $main-color;
+            .icon {
+              color: $main-color;
+            }
+          }
+        }
+      }
+    }
+
+    .icon.cart {
+      margin: 0 1rem;
     }
   }
 }

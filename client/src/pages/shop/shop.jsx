@@ -9,7 +9,6 @@ import Products from "../../components/products/products";
 function Shop() {
   return (
     <section>
-      <Header />
       <Categories />
       <div className="main-page">
         <Filter />

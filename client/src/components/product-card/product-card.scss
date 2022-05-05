@@ -64,6 +64,9 @@
     padding: 0 7px;
     color: $text-color;
     margin-bottom: 5px;
+    .price {
+      color: #333;
+    }
     .rating {
       display: flex;
       align-items: center;

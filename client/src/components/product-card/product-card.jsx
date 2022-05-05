@@ -1,11 +1,11 @@
 import React from "react";
-import "./product.scss";
+import "./product-card.scss";
 
 import { AiOutlineHeart, AiFillStar } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import { BiShowAlt } from "react-icons/bi";
 
-function Product({ item }) {
+function ProductCard({ item }) {
   return (
     <div className="product">
       <div className="image">
@@ -35,4 +35,4 @@ function Product({ item }) {
   );
 }
 
-export default Product;
+export default ProductCard;

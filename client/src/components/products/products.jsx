@@ -1,7 +1,7 @@
 import React from "react";
 import "./products.scss";
 
-import Product from "../product/product";
+import ProductCard from "../product-card/product-card";
 
 const products = [
   {
@@ -70,7 +70,7 @@ const Products = () => {
   return (
     <div className="products">
       {products.map((item) => {
-        return <Product key={item.id} item={item} />;
+        return <ProductCard key={item.id} item={item} />;
       })}
     </div>
   );
