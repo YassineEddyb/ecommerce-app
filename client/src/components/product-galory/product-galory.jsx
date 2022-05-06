@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "./product-galory.scss"
+import "./product-galory.scss";
 
 function ProductGalory({images}) {
   const [image, setImage] = useState(images[0]);

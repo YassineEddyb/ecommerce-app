@@ -8,7 +8,7 @@ const router = express.Router();
 
 router
   .route("/")
-  .get(authController.protectRoute ,productController.getAllProducts)
+  .get(productController.getAllProducts)
   .post(productValidator, productController.createProduct)
   .delete(productController.deleteAll);
 
