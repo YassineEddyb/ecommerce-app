@@ -4,6 +4,7 @@ import "./product-card.scss";
 import { AiOutlineHeart, AiFillStar } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import { BiShowAlt } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 function ProductCard({ item }) {
   return (
@@ -21,7 +22,9 @@ function ProductCard({ item }) {
             <BiShowAlt />
           </div>
         </div>
-        <img src={require("../../images/slider-2.jpg")} alt={item.title} />
+        <Link to="/product">
+          <img src={require("../../images/slider-2.jpg")} alt={item.title} />
+        </Link>
       </div>
       <span className="title">{item.title}</span>
       <div className="info">

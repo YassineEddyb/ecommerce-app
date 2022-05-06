@@ -1,0 +1,25 @@
+.product-galory {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  .main-img {
+    margin-left: 1rem;
+    overflow: hidden;
+    width: 400px;
+    height: 500px;
+    img {
+      max-width: 100%;
+    }
+  }
+  .images {
+    .image {
+      overflow: hidden;
+      img {
+        cursor: pointer;
+        width: 70px;
+        height: 90px;
+      }
+    }
+  }
+}

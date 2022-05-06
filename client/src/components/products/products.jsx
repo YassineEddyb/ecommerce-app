@@ -1,72 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import "./products.scss";
 
 import ProductCard from "../product-card/product-card";
-
-const products = [
-  {
-    id: 1,
-    title: "jacket",
-    picture: "../../images/slider-2.jpg",
-    images: [String],
-    desc: "the best jacket ever",
-    price: 49.54,
-    rating: 4.9,
-    categories: ["shirts"],
-  },
-  {
-    id: 1,
-    title: "jacket",
-    picture: "../../images/slider-2.jpg",
-    images: [String],
-    desc: "the best jacket ever",
-    price: 49.54,
-    rating: 4.9,
-    categories: ["shirts"],
-  },
-  {
-    id: 1,
-    title: "jacket",
-    picture: "../../images/slider-2.jpg",
-    images: [String],
-    desc: "the best jacket ever",
-    price: 49.54,
-    rating: 4.9,
-    categories: ["shirts"],
-  },
-  {
-    id: 1,
-    title: "jacket",
-    picture: "../../images/slider-2.jpg",
-    images: [String],
-    desc: "the best jacket ever",
-    price: 49.54,
-    rating: 4.9,
-    categories: ["shirts"],
-  },
-  {
-    id: 1,
-    title: "jacket",
-    picture: "../../images/slider-2.jpg",
-    images: [String],
-    desc: "the best jacket ever",
-    price: 49.54,
-    rating: 4.9,
-    categories: ["shirts"],
-  },
-  {
-    id: 1,
-    title: "jacket",
-    picture: "../../images/slider-2.jpg",
-    images: [String],
-    desc: "the best jacket ever",
-    price: 49.54,
-    rating: 4.9,
-    categories: ["shirts"],
-  },
-];
+import ProductContext from "../../context/products";
 
 const Products = () => {
+  const {products} = useContext(ProductContext);
+
+  console.log(products);
+
   return (
     <div className="products">
       {products.map((item) => {

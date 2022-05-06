@@ -1,0 +1,47 @@
+@import "../../main.scss";
+
+.product-page {
+  margin-top: 2rem;
+  display: flex;
+
+  .details {
+    width: 50%;
+    padding-right: 3rem;
+
+    .price {
+      margin: 1.5rem 0;
+    }
+
+    .quantity {
+      margin: 1.5rem 0;
+      user-select: none;
+      div {
+        color: $text-color;
+        margin-top: 1rem;
+        width: 150px;
+        padding: 8px;
+        border: 1px solid rgb(192, 192, 192);
+        display: flex;
+        justify-content: space-around;
+        .icon {
+          cursor: pointer;
+          background-color: rgb(238, 238, 238);
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          padding: 4px;
+        }
+      }
+    }
+
+    .desc {
+      color: $text-color;
+      margin-top: 2rem;
+      span {
+        display: block;
+        color: #000;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}

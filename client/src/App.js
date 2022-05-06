@@ -10,20 +10,24 @@ import Login from "./pages/login/login";
 import Shop from "./pages/shop/shop";
 import SignUp from "./pages/sign-up/sign-up";
 
+import { ProductProvider } from "./context/products";
+
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/signup" element={<SignUp />} />
-          <Route exact path="/shop" element={<Shop />} />
-          <Route path="/product" element={<ProductPage />} />
-        </Routes>
-      </Router>
-      <Footer />
+      <ProductProvider>
+        <Router>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/signup" element={<SignUp />} />
+            <Route exact path="/shop" element={<Shop />} />
+            <Route path="/product" element={<ProductPage />} />
+          </Routes>
+          <Footer />
+        </Router>
+      </ProductProvider>
     </div>
   );
 }
