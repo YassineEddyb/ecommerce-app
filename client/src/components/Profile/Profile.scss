@@ -1,0 +1,23 @@
+@import "../../main.scss";
+
+.profile {
+  margin-bottom: 2rem;
+  .input {
+    margin: 1.5rem 0;
+    color: $bold-text-color;
+    position: relative;
+    h6 {
+      position: absolute;
+      left: 1rem;
+      top: -5px;
+      background-color: white;
+      padding: 0 10px
+    }
+    input {
+      color: $text-color;
+      border: 1px solid $light-color;
+      padding: 15px 20px;
+      width: 40%;
+    }
+  }
+}

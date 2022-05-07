@@ -9,6 +9,7 @@ import Home from "./pages/home/home";
 import Login from "./pages/login/login";
 import Shop from "./pages/shop/shop";
 import SignUp from "./pages/sign-up/sign-up";
+import Account from "./pages/account/account";
 
 import { ProductProvider } from "./context/products";
 
@@ -24,6 +25,7 @@ function App() {
             <Route exact path="/signup" element={<SignUp />} />
             <Route exact path="/shop" element={<Shop />} />
             <Route path="/product" element={<ProductPage />} />
+            <Route path="/account" element={<Account />} />
           </Routes>
           <Footer />
         </Router>

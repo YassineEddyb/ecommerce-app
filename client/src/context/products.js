@@ -143,21 +143,23 @@ const headers = {
   "Content-Type": "application/json",
 };
 
-const url = "https://5000-cs-806939113361-default.cs-europe-west1-iuzs.cloudshell.dev/api/products"
+const url = "http://localhost:5000/api/products"
 
 export const ProductProvider = ({children}) => {
   const [products, setProducts] = useState([]);
 
-  const fetchProducts = async () => {
-    try {
-      const result = await axios.get(url, {headers});
-      setProducts(result.products);
-    } catch(err) {
-      console.log(err);
-    }
-  }
 
-  useEffect(fetchProducts, [])
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const result = await axios.get(url, {headers});
+        setProducts(result.data.products);
+      } catch(err) {
+        console.log(err);
+      }
+    }
+    fetchProducts();
+  }, [])
 
   console.log(products);
 

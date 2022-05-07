@@ -1,0 +1,13 @@
+@import "../../main.scss";
+
+.side-bar-cart {
+  padding-top: 3rem;
+  width: 80%;
+  margin: auto;
+  .title {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $light-color;
+  }
+}

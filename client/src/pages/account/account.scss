@@ -1,0 +1,37 @@
+@import "../../main.scss";
+
+.account {
+  width: 90%;
+  margin: auto;
+  padding: 2rem 0;
+  .title {
+    color: $bold-text-color;
+    margin-bottom: 2rem;
+    border-bottom: solid 1px $light-color;
+    padding-bottom: 1rem;
+  }
+
+  .content {
+    display: flex;
+
+    .sidebar {
+      width: 30%;
+      h3 {
+        cursor: pointer;
+        color: $text-color;
+        font-weight: 600;
+        font-size: 1rem;
+
+        &:hover {
+          color : $main-color;
+        }
+      }
+      .profile {
+        margin: 1rem 0;
+      }
+    }
+    .cntr {
+      width: 70%;
+    }
+  }
+}

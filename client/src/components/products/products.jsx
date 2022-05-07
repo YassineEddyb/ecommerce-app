@@ -7,12 +7,10 @@ import ProductContext from "../../context/products";
 const Products = () => {
   const {products} = useContext(ProductContext);
 
-  console.log(products);
-
   return (
     <div className="products">
       {products.map((item) => {
-        return <ProductCard key={item.id} item={item} />;
+        return <ProductCard key={item._id} item={item} />;
       })}
     </div>
   );

@@ -1,0 +1,33 @@
+@import "../../main.scss";
+
+.cntr {
+  .back-drop {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    z-index: 998;
+  }
+  .back-drop-open {
+    display: block;
+  }
+  .side-bar {
+    background-color: $back-light;
+    position: absolute;
+    height: 100%;
+    width: 400px;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    position: fixed;
+    transform: translate(100%);
+    transition: 0.5s ease-in-out;
+  }
+
+  .side-bar-open {
+    transform: translate(0);
+  }
+}

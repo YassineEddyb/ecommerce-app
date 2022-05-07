@@ -2,9 +2,9 @@ import React from "react";
 import "./shop.scss";
 
 import Categories from "../../components/categories/categories";
-import Header from "../../components/header/header-component";
 import Filter from "../../components/filter/filter";
 import Products from "../../components/products/products";
+import SideBarCart from "../../components/SideBarCart/SideBarCart";
 
 function Shop() {
   return (
