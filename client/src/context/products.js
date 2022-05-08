@@ -1,174 +1,93 @@
-import {createContext, useState, useEffect} from "react";
+import { createContext, useState, useEffect } from "react";
 import axios from "axios";
 
 const ProductContext = createContext();
 
-
-// const products = [
-//   {
-//     id: 1,
-//     title: "jacket",
-//     picture: "../../images/slider-2.jpg",
-//     images: [
-//       "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNsb3RoZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-//       "https://images.unsplash.com/photo-1581655353564-df123a1eb820?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dCUyMHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-//       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dCUyMHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-//       "https://images.unsplash.com/photo-1554568218-0f1715e72254?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dCUyMHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-//     ],
-//     desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-//           molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-//           numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-//           optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-//           obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-//           nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-//           tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-//           quia. Quo neque error repudiandae fuga? Ipsa laudantium mole`,
-//     price: 49.54,
-//     rating: 4.9,
-//     categories: ["shirts"],
-//   },
-//   {
-//     id: 1,
-//     title: "jacket",
-//     picture: "../../images/slider-2.jpg",
-//     images: [
-//       "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNsb3RoZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-//       "https://images.unsplash.com/photo-1581655353564-df123a1eb820?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dCUyMHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-//       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dCUyMHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-//       "https://images.unsplash.com/photo-1554568218-0f1715e72254?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dCUyMHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-//     ],
-//     desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-//           molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-//           numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-//           optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-//           obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-//           nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-//           tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-//           quia. Quo neque error repudiandae fuga? Ipsa laudantium mole`,
-//     price: 49.54,
-//     rating: 4.9,
-//     categories: ["shirts"],
-//   },
-//   {
-//     id: 1,
-//     title: "jacket",
-//     picture: "../../images/slider-2.jpg",
-//     images: [
-//       "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNsb3RoZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-//       "https://images.unsplash.com/photo-1581655353564-df123a1eb820?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dCUyMHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-//       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dCUyMHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-//       "https://images.unsplash.com/photo-1554568218-0f1715e72254?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dCUyMHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-//     ],
-//     desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-//           molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-//           numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-//           optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-//           obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-//           nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-//           tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-//           quia. Quo neque error repudiandae fuga? Ipsa laudantium mole`,
-//     price: 49.54,
-//     rating: 4.9,
-//     categories: ["shirts"],
-//   },
-//   {
-//     id: 1,
-//     title: "jacket",
-//     picture: "../../images/slider-2.jpg",
-//     images: [
-//       "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNsb3RoZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-//       "https://images.unsplash.com/photo-1581655353564-df123a1eb820?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dCUyMHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-//       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dCUyMHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-//       "https://images.unsplash.com/photo-1554568218-0f1715e72254?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dCUyMHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-//     ],
-//     desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-//           molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-//           numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-//           optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-//           obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-//           nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-//           tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-//           quia. Quo neque error repudiandae fuga? Ipsa laudantium mole`,
-//     price: 49.54,
-//     rating: 4.9,
-//     categories: ["shirts"],
-//   },
-//   {
-//     id: 1,
-//     title: "jacket",
-//     picture: "../../images/slider-2.jpg",
-//     images: [
-//       "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNsb3RoZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-//       "https://images.unsplash.com/photo-1581655353564-df123a1eb820?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dCUyMHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-//       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dCUyMHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-//       "https://images.unsplash.com/photo-1554568218-0f1715e72254?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dCUyMHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-//     ],
-//     desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-//           molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-//           numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-//           optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-//           obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-//           nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-//           tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-//           quia. Quo neque error repudiandae fuga? Ipsa laudantium mole`,
-//     price: 49.54,
-//     rating: 4.9,
-//     categories: ["shirts"],
-//   },
-//   {
-//     id: 1,
-//     title: "jacket",
-//     picture: "../../images/slider-2.jpg",
-//     images: [
-//       "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGNsb3RoZXN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-//       "https://images.unsplash.com/photo-1581655353564-df123a1eb820?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dCUyMHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-//       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8dCUyMHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-//       "https://images.unsplash.com/photo-1554568218-0f1715e72254?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8dCUyMHNoaXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
-//     ],
-//     desc: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-//           molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-//           numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-//           optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-//           obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-//           nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-//           tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-//           quia. Quo neque error repudiandae fuga? Ipsa laudantium mole`,
-//     price: 49.54,
-//     rating: 4.9,
-//     categories: ["shirts"],
-//   },
-// ];
+const products = [
+  {
+    title: "Men's Slim-Fit Navy & White Stripe Blazer",
+    picture: "../../../public/images/1.1.webp",
+    images: [
+      "../../../public/images/1.1.webp",
+      "../../../public/images/1.2.webp",
+      "../../../public/images/1.3.webp",
+      "../../../public/images/1.4.webp",
+    ],
+    desc: "If you could create the perfect blazer to make your confidence soar, it would probably look a lot like this slim-fit navy and white striped blazer from Tallia.",
+    price: 135.99,
+    rating: 4.9,
+    categories: ["blazers"],
+  },
+  {
+    title: "INC Men's Ezra Sneakers, Created for Macy's",
+    picture: "../../../public/images/2.1.webp",
+    images: [
+      "../../../public/images/2.1.webp",
+      "../../../public/images/2.2.webp",
+      "../../../public/images/2.3.webp",
+      "../../../public/images/2.4.webp",
+    ],
+    desc: "INC International Concepts® finishes off your relaxed look with the smooth lines and comfortable fit of the Ezra low-top sneakers.",
+    price: 30.99,
+    rating: 4.9,
+    categories: ["shoes"],
+  },
+  {
+    title: "Men's Fleece Jogger Pants",
+    picture: "../../../public/images/3.1.webp",
+    images: [
+      "../../../public/images/3.1.webp",
+      "../../../public/images/3.2.webp",
+      "../../../public/images/3.3.webp",
+      "../../../public/images/3.4.webp",
+    ],
+    desc: "Objects in motion stay in motion. Even after practice is wrapped up, you want the same freedom to move through life with easy comfort. Slip into these adidas pants and go about your routine without a single roadblock.",
+    price: 32.99,
+    rating: 4.9,
+    categories: ["pants"],
+  },
+  {
+    title: "Men's Logo Hoodie",
+    picture: "../../../public/images/3.1.webp",
+    images: [
+      "../../../public/images/3.1.webp",
+      "../../../public/images/3.2.webp",
+      "../../../public/images/3.3.webp",
+      "../../../public/images/3.4.webp",
+    ],
+    desc: "Meet and embrace this versatile hoodie with an adidas Badge of Sport. It features an adjustable drawstring hood and the soft, breathable comfort of pure cotton.",
+    price: 31.99,
+    rating: 4.9,
+    categories: ["hoodies"],
+  },
+];
 
 const headers = {
   "Content-Type": "application/json",
 };
 
-const url = "http://localhost:5000/api/products"
+const url = "http://localhost:5000/api/products";
 
-export const ProductProvider = ({children}) => {
-  const [products, setProducts] = useState([]);
+export const ProductProvider = ({ children }) => {
+  // const [products, setProducts] = useState([]);
 
-
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const result = await axios.get(url, {headers});
-        setProducts(result.data.products);
-      } catch(err) {
-        console.log(err);
-      }
-    }
-    fetchProducts();
-  }, [])
-
-  console.log(products);
-
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     try {
+  //       const result = await axios.get(url, { headers });
+  //       setProducts(result.data.products);
+  //     } catch (err) {
+  //       console.log(err);
+  //     }
+  //   };
+  //   fetchProducts();
+  // }, []);
 
   return (
-    <ProductContext.Provider value={{products}}>
+    <ProductContext.Provider value={{ products }}>
       {children}
     </ProductContext.Provider>
-  )
-}
+  );
+};
 
 export default ProductContext;

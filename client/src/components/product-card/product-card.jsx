@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./product-card.scss";
 
 import { AiOutlineHeart, AiFillStar } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
 import { BiShowAlt } from "react-icons/bi";
 import { Link } from "react-router-dom";
+import CartContext from "../../context/cartContext";
 
 function ProductCard({ item }) {
+  const { cart, setCart } = useContext(CartContext);
+  let el;
+
+  const addProductToCart = () => {
+    if ((el = cart.find((el) => el.product._id == item._id))) {
+      el.quantity += 1;
+      setCart([...cart]);
+    } else setCart([...cart, { product: item, quantity: 1 }]);
+  };
+
   return (
     <div className="product">
       <div className="image">
         <div className="tools">
-          <div className="add-to-cart">
+          <div className="add-to-cart" onClick={addProductToCart}>
             <FiShoppingCart />
             <span>ADD TO CART</span>
           </div>

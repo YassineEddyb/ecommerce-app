@@ -1,0 +1,16 @@
+@import "../../main.scss";
+
+.cart-product {
+  display: flex;
+  margin: 0.5rem 0;
+
+  .image {
+    width: 100px;
+    img {
+      width: 100%;
+    }
+  }
+  .product-info {
+    padding: 1rem;
+  }
+}
