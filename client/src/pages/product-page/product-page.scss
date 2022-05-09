@@ -12,26 +12,9 @@
       margin: 1.5rem 0;
     }
 
-    .quantity {
+    .quantity-title {
       margin: 1.5rem 0;
       user-select: none;
-      div {
-        color: $text-color;
-        margin-top: 1rem;
-        width: 150px;
-        padding: 8px;
-        border: 1px solid rgb(192, 192, 192);
-        display: flex;
-        justify-content: space-around;
-        .icon {
-          cursor: pointer;
-          background-color: rgb(238, 238, 238);
-          border-radius: 50%;
-          width: 20px;
-          height: 20px;
-          padding: 4px;
-        }
-      }
     }
 
     .desc {

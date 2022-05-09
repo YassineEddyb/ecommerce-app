@@ -33,8 +33,8 @@ function ProductCard({ item }) {
             <BiShowAlt />
           </div>
         </div>
-        <Link to="/product">
-          <img src={require("../../images/slider-2.jpg")} alt={item.title} />
+        <Link to={"/product/" + item._id}>
+          <img src={item.picture} alt={item.title} />
         </Link>
       </div>
       <span className="title">{item.title}</span>

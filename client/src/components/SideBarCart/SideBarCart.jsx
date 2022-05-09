@@ -8,8 +8,6 @@ import CartProduct from "../CartProduct/CartProduct";
 function SideBarCart({ sideBar, toggleSideBar }) {
   const { cart } = useContext(CartContext);
 
-  console.log(cart);
-
   if (sideBar) document.body.style.overflowY = "hidden";
   else document.body.style.overflowY = "auto";
 
@@ -17,8 +15,8 @@ function SideBarCart({ sideBar, toggleSideBar }) {
     <SideBar sideBar={sideBar} toggleSideBar={toggleSideBar}>
       <div className="side-bar-cart">
         <h3 className="title">CART</h3>
-        {cart.map((el) => {
-          return <CartProduct key={el._id} item={el} />;
+        {cart.map((el, idx) => {
+          return <CartProduct key={idx} item={el} />;
         })}
       </div>
     </SideBar>

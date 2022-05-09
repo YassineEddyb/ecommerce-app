@@ -7,9 +7,11 @@ const catchAsync = require("../utills/catchAsync");
 const ApiError = require("../utills/api-error");
 
 const createAndSendJWT = (user, res) => {
-  const token = jwt.sign({id: user.id}, process.env.JWT_SECRET, {expiresIn: process.env.EXPIRES_IN})
-  res.status(200).json({ status: "success", token});
-}
+  const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.EXPIRES_IN,
+  });
+  res.status(200).json({ status: "success", token, user });
+};
 
 exports.register = catchAsync(async (req, res, next) => {
   const errors = validationResult(req);
@@ -45,16 +47,20 @@ exports.login = catchAsync(async (req, res, next) => {
 exports.protectRoute = catchAsync(async (req, res, next) => {
   // getting the token from header
   const token = req.headers.authorization.split(" ")[1];
-  if (!token)  {
-    return next(new ApiError("your not logged in please login to get accessed", 400));
+  if (!token) {
+    return next(
+      new ApiError("your not logged in please login to get accessed", 400)
+    );
   }
 
   // verification
   jwt.verify(token, process.env.JWT_SECRET, (err) => {
     if (err) {
-      return next(new ApiError("this token has expired please login again", 400))
+      return next(
+        new ApiError("this token has expired please login again", 400)
+      );
     }
   });
 
   next();
-})
+});

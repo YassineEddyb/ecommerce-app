@@ -9,7 +9,7 @@ import "./header.styles.scss";
 import SideBarCart from "../SideBarCart/SideBarCart";
 
 const Header = () => {
-  const [sideBar, setSideBar] = useState(true);
+  const [sideBar, setSideBar] = useState(false);
 
   const toggleSideBar = () => {
     setSideBar((prevState) => !prevState);
@@ -22,25 +22,25 @@ const Header = () => {
           <h1>LOGO</h1>
         </Link>
         <nav>
-          <Link className="icon search" to="/shop">
+          <div className="icon search">
             <FiSearch />
-          </Link>
-          <Link className="icon cart" to="/shop" onClick={toggleSideBar}>
+          </div>
+          <div className="icon cart" onClick={toggleSideBar}>
             <FiShoppingBag />
-          </Link>
-          <Link className="icon user" to="/shop">
+          </div>
+          <div className="icon user">
             <FiUser />
             <div className="drop">
-              <Link className="auth login" to="/signup">
+              <Link className="auth login" to="/login">
                 <IoMdLogIn className="icon" />
                 Login
               </Link>
-              <Link className="auth signup" to="/login">
+              <Link className="auth signup" to="/signup">
                 <FaRegUserCircle className="icon" />
                 Sign Up
               </Link>
             </div>
-          </Link>
+          </div>
         </nav>
       </header>
       <SideBarCart sideBar={sideBar} toggleSideBar={toggleSideBar} />
