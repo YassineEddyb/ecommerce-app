@@ -1,6 +1,7 @@
 const express = require("express");
 
 const userController = require("../controllers/userController");
+const authcontroller = require("../controllers/authController");
 const {
   registerValidator,
   updateUserValidator,
@@ -18,5 +19,7 @@ router
   .get(userController.getUser)
   .patch(updateUserValidator, userController.updateUser)
   .delete(userController.deleteUser);
+
+router.route("/me").get(authcontroller.protectRoute, userController.getMe);
 
 module.exports = router;

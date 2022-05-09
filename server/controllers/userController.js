@@ -34,6 +34,10 @@ exports.getUser = catchAsync(async (req, res, next) => {
   res.status(200).json({ status: "success", data: { user } });
 });
 
+exports.getMe = catchAsync(async (req, res, next) => {
+  res.status(200).json({ status: "success", data: { user } });
+});
+
 exports.updateUser = catchAsync(async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) return next(new ApiError(errors.array(), 400));

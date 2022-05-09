@@ -24,8 +24,7 @@ const Login = () => {
         email: data.email,
         password: data.password,
       });
-
-      // setUser(res.data.user);
+      setUser(res.data.user);
       console.log(res.data);
     } catch (err) {
       console.log(err.response.data.message);
