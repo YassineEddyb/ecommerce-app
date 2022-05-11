@@ -22,9 +22,9 @@ const Header = () => {
           <h1>LOGO</h1>
         </Link>
         <nav>
-          <div className="icon search">
+          <Link className="icon search" to="/shop">
             <FiSearch />
-          </div>
+          </Link>
           <div className="icon cart" onClick={toggleSideBar}>
             <FiShoppingBag />
           </div>

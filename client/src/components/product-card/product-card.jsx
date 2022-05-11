@@ -37,7 +37,10 @@ function ProductCard({ item }) {
           <img src={item.picture} alt={item.title} />
         </Link>
       </div>
-      <span className="title">{item.title}</span>
+      <span className="title">
+        {item.title.substring(0, 50)}
+        {item.title.length > 50 ? ".." : null}
+      </span>
       <div className="info">
         <span className="price">${item.price}</span>
         <div className="rating">
