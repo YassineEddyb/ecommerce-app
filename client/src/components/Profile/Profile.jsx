@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./Profile.scss";
 
 import Button from "../button/button";
 
-function Profile() {
+function Profile({ user }) {
+  console.log(user);
   const [credintials, setCredintials] = useState({
-    name: "yassineddyb",
-    email: "yassineddyb@gmail.com",
-    password: "123456",
+    name: user.name,
+    email: user.email,
+    password: user.password,
   });
 
   const handleChange = (e) => {
@@ -42,7 +43,7 @@ function Profile() {
         <input
           type="text"
           name="password"
-          value={credintials.password}
+          value="********"
           onChange={handleChange}
         />
       </div>

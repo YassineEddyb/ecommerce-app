@@ -1,14 +1,12 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./login.scss";
 
-import axios from "axios";
-import UserContext from "../../context/userContext";
+import axios from "../../utils/axiosConfig";
 
 const url = "http://localhost:5000";
 
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
-  const { setUser } = useContext(UserContext);
 
   const changeHandler = (e) => {
     e.preventDefault();
@@ -20,12 +18,11 @@ const Login = () => {
   const SubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(url + "/api/auth/login", {
+      const res = await axios.post("api/auth/login", {
         email: data.email,
         password: data.password,
       });
-      setUser(res.data.user);
-      console.log(res.data);
+      localStorage.setItem("jwt", res.data.token);
     } catch (err) {
       console.log(err.response.data.message);
     }

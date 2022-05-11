@@ -9,6 +9,8 @@ const {
 
 const router = express.Router();
 
+router.route("/me").get(authcontroller.protectRoute, userController.getMe);
+
 router
   .route("/")
   .get(userController.getAllUsers)
@@ -19,7 +21,5 @@ router
   .get(userController.getUser)
   .patch(updateUserValidator, userController.updateUser)
   .delete(userController.deleteUser);
-
-router.route("/me").get(authcontroller.protectRoute, userController.getMe);
 
 module.exports = router;

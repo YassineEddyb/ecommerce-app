@@ -35,7 +35,9 @@ exports.getUser = catchAsync(async (req, res, next) => {
 });
 
 exports.getMe = catchAsync(async (req, res, next) => {
-  res.status(200).json({ status: "success", data: { user } });
+  const user = await User.findById(req.userId);
+  console.log(req.userId);
+  res.status(200).json({ status: "success", user });
 });
 
 exports.updateUser = catchAsync(async (req, res, next) => {

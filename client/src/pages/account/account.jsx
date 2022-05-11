@@ -1,16 +1,18 @@
-import React, {useState} from 'react'
-import "./account.scss"
+import React, { useState, useContext } from "react";
+import "./account.scss";
 
-import Addresses from '../../components/Addresses/Addresses';
-import Orders from '../../components/Orders/Orders';
-import Profile from '../../components/Profile/Profile';
+import UserContext from "../../context/userContext";
+import Addresses from "../../components/Addresses/Addresses";
+import Orders from "../../components/Orders/Orders";
+import Profile from "../../components/Profile/Profile";
 
 function Account() {
-  const [view, setView] = useState("Profile");
+  const { user } = useContext(UserContext);
+  const [view, setView] = useState("Orders");
 
   const changeComponent = (e) => {
     setView(e.target.innerText);
-  }
+  };
 
   let component = "";
 
@@ -19,7 +21,7 @@ function Account() {
       component = <Orders />;
       break;
     case "Profile":
-      component = <Profile />;
+      component = <Profile user={user} />;
       break;
     case "Addresses":
       component = <Addresses />;
@@ -31,16 +33,20 @@ function Account() {
       <h3 className="title">My Account</h3>
       <div className="content">
         <div className="sidebar">
-          <h3 className="orders" onClick={changeComponent}>Orders</h3>
-          <h3 className="profile" onClick={changeComponent}>Profile</h3>
-          <h3 classname="addresses" onClick={changeComponent}>Addresses</h3>
+          <h3 className="orders" onClick={changeComponent}>
+            Orders
+          </h3>
+          <h3 className="profile" onClick={changeComponent}>
+            Profile
+          </h3>
+          <h3 className="addresses" onClick={changeComponent}>
+            Addresses
+          </h3>
         </div>
-        <div className="cntr">
-          {component}
-        </div>
+        <div className="cntr">{component}</div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Account;
