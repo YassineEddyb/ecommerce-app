@@ -9,7 +9,10 @@ const {
 
 const router = express.Router();
 
-router.route("/me").get(authcontroller.protectRoute, userController.getMe);
+router
+  .route("/me")
+  .get(authcontroller.protectRoute, userController.getMe)
+  .patch(authcontroller.protectRoute, userController.updateMe);
 
 router
   .route("/")

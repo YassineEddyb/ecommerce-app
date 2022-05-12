@@ -1,22 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import "./product-galory.scss";
 
-function ProductGalory({images}) {
+function ProductGalory({ images }) {
   const [image, setImage] = useState(images[0]);
 
   return (
     <div className="product-galory">
       <div className="images">
-        {images.map((el) => {
+        {images.map((el, idx) => {
           return (
             <div className="image">
-              <img 
+              <img
                 src={el}
+                key={idx}
                 onClick={(e) => {
-                  setImage(el)
+                  setImage(el);
                 }}
-                alt="image" 
-              />;
+                alt="image"
+              />
+              ;
             </div>
           );
         })}

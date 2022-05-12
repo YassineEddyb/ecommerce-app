@@ -34,12 +34,6 @@ exports.getUser = catchAsync(async (req, res, next) => {
   res.status(200).json({ status: "success", data: { user } });
 });
 
-exports.getMe = catchAsync(async (req, res, next) => {
-  const user = await User.findById(req.userId);
-  console.log(req.userId);
-  res.status(200).json({ status: "success", user });
-});
-
 exports.updateUser = catchAsync(async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) return next(new ApiError(errors.array(), 400));
@@ -71,4 +65,37 @@ exports.deleteUser = catchAsync(async (req, res, next) => {
   }
 
   res.status(200).json({ status: "success" });
+});
+
+exports.getMe = catchAsync(async (req, res, next) => {
+  const user = await User.findById(req.userId);
+
+  user.password = undefined;
+  delete user.password;
+  res.status(200).json({ status: "success", user });
+});
+
+exports.updateMe = catchAsync(async (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) return next(new ApiError(errors.array(), 400));
+
+  // prevent updating password from this route
+  if (req.body.password || req.body.passwordConfirm) {
+    return next(
+      new ApiError("nice try, this midleware is not for changing password", 401)
+    );
+  }
+
+  const user = await User.findByIdAndUpdate(req.userId, req.body, {
+    new: true,
+    runValidators: true,
+  });
+
+  if (!user) {
+    return next(new ApiError("no user with that id found", 404));
+  }
+
+  user.password = undefined;
+  delete user.password;
+  res.status(200).json({ status: "success", user });
 });

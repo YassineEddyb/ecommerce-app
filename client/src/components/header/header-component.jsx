@@ -1,14 +1,16 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import "./header.styles.scss";
 
+import { Link } from "react-router-dom";
 import { FiSearch, FiUser, FiShoppingBag } from "react-icons/fi";
 import { IoMdLogIn } from "react-icons/io";
 import { FaRegUserCircle } from "react-icons/fa";
 
-import "./header.styles.scss";
+import UserContext from "../../context/userContext";
 import SideBarCart from "../SideBarCart/SideBarCart";
 
 const Header = () => {
+  const { user } = useContext(UserContext);
   const [sideBar, setSideBar] = useState(false);
 
   const toggleSideBar = () => {
@@ -26,6 +28,9 @@ const Header = () => {
             <FiSearch />
           </Link>
           <div className="icon cart" onClick={toggleSideBar}>
+            {user.cart?.length > 0 ? (
+              <div className="count">{user.cart.length}</div>
+            ) : null}
             <FiShoppingBag />
           </div>
           <div className="icon user">

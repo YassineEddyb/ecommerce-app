@@ -20,10 +20,12 @@ const userSchema = mongoose.Schema({
   picture: {
     type: String,
   },
-  cart: {
-    cartProducts: [mongoose.Schema.ObjectId],
-    quantity: Number,
-  },
+  cart: [
+    {
+      product: {},
+      quantity: Number,
+    },
+  ],
 });
 
 const User = mongoose.model("User", userSchema);

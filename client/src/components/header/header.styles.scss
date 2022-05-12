@@ -22,6 +22,7 @@
   nav {
     display: flex;
     .icon {
+      cursor: pointer;
       font-size: 1.8rem;
       color: $bold-text-color;
       display: flex;
@@ -77,6 +78,21 @@
 
     .icon.cart {
       margin: 0 1rem;
+      position: relative;
+      .count {
+        height: 18px;
+        width: 18px;
+        font-size: 0.8rem;
+        text-align: center;
+        line-height: 17px;
+        font-weight: bold;
+        border-radius: 50%;
+        background-color: red;
+        color: white;
+        position: absolute;
+        top: 2px;
+        right: -8px;
+      }
     }
   }
 }

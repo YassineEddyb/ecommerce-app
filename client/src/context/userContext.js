@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 
 import axios from "../utils/axiosConfig";
 
@@ -7,7 +7,21 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
 
-  console.log(localStorage.getItem["jwt"]);
+  useEffect(() => {
+    const updateUser = async () => {
+      try {
+        await axios.patch("api/users/me", user, {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("jwt")}`,
+          },
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    updateUser();
+  }, [user]);
+
   useEffect(() => {
     const fetchUser = async () => {
       try {

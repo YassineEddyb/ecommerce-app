@@ -2,23 +2,29 @@ import React, { useState, useContext } from "react";
 import "./quantity.scss";
 
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
-import CartContext from "../../context/cartContext";
+import UserContext from "../../context/userContext";
 
 function Quantity({ product, update }) {
-  const { cart } = useContext(CartContext);
-  const item = cart.find((el) => product._id === el.product._id);
-  let [quantity, setQuantity] = useState(item.quantity);
+  const { user, setUser } = useContext(UserContext);
+  const item = user.cart.find((el) => product._id === el.product._id);
+  let [quantity, setQuantity] = useState(item?.quantity);
 
-  if (update) quantity = item.quantity;
+  if (update) quantity = item?.quantity;
 
   const incrementQuantity = () => {
-    if (update) item.quantity += 1;
+    if (update) {
+      item.quantity += 1;
+      setUser({ ...user });
+    }
     setQuantity((quantity += 1));
   };
 
   const decrementQuantity = () => {
     if (quantity > 0) {
-      if (update) item.quantity -= 1;
+      if (update) {
+        item.quantity -= 1;
+        setUser({ ...user });
+      }
       setQuantity((quantity -= 1));
     }
   };
