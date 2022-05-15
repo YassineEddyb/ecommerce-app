@@ -1,3 +1,6 @@
+@import "../../main.scss";
+@import "../../assets/styles/breakpoints.scss";
+
 .product-galory {
   display: flex;
   justify-content: center;
@@ -7,7 +10,6 @@
     margin-left: 1rem;
     overflow: hidden;
     width: 400px;
-    height: 500px;
     img {
       max-width: 100%;
     }
@@ -15,11 +17,17 @@
   .images {
     .image {
       overflow: hidden;
+      max-width: 70px;
+      cursor: pointer;
       img {
-        cursor: pointer;
-        width: 70px;
-        height: 90px;
+        width: 100%;
       }
     }
+  }
+}
+
+@include breakpoint-down(md) {
+  .product-galory {
+    width: 100%;
   }
 }

@@ -1,5 +1,36 @@
 @import "../../main.scss";
+@import "../../assets/styles/breakpoints.scss";
 
 .main-page {
+  margin: 5rem 0;
   display: flex;
+  width: 100%;
+
+  .flex {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    .options {
+      display: flex;
+      height: 50px;
+      padding: 0 3rem;
+      align-items: center;
+      justify-content: space-between;
+      .filter-icon {
+        // display: none;
+        cursor: pointer;
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@include breakpoint-down(md) {
+  // .filters {
+  //   display: none;
+  // }
+
+  .filter-icon {
+    display: block;
+  }
 }

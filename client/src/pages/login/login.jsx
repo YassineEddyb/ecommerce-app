@@ -2,17 +2,26 @@ import React, { useState, useContext, useEffect } from "react";
 import "./login.scss";
 
 import axios from "../../utils/axiosConfig";
-
-const url = "http://localhost:5000";
+import Button from "../../components/button/button";
+import Input from "../../components/Input/input";
 
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
+  const [visible, setVisible] = useState(false);
 
   const changeHandler = (e) => {
     e.preventDefault();
     const name = e.target.name;
     const value = e.target.value;
     setData({ ...data, [name]: value });
+  };
+
+  const handleClick = (e) => {
+    //   const el = document.querySelector(".pass");
+    //   // if (!visible) el.type = "text";
+    //   // else el.type = "password";
+    //   console.log(e);
+    //   // setVisible(!visible);
   };
 
   const SubmitHandler = async (e) => {
@@ -29,44 +38,27 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
-      <div className="login">
-        <div className="img"></div>
-        <div className="form">
-          <div>
-            <h1>Log in</h1>
-            <form action="">
-              <label className="label" htmlFor="email">
-                Email
-              </label>
-              <input
-                name="email"
-                className="input email"
-                type="email"
-                placeholder="Enter your email"
-                value={data.email}
-                onChange={changeHandler}
-              />
-              <label className="label" htmlFor="pass">
-                Password
-              </label>
-              <input
-                name="password"
-                className="input pass"
-                type="password"
-                placeholder="Enter your password"
-                value={data.password}
-                onChange={changeHandler}
-              />
-              <input id="check" className="check" type="checkbox" />
-              <label htmlFor="check">show password</label>
-              <button className="btn" onClick={SubmitHandler}>
-                Log in
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
+    <div className="login-page">
+      <h1>Log in</h1>
+      <form className="form">
+        <Input name="email" value={data.email} changeHandler={changeHandler} />
+        <Input
+          className="pass"
+          name="password"
+          value={data.password}
+          changeHandler={changeHandler}
+        />
+        <input
+          id="check"
+          className="check"
+          type="checkbox"
+          onClick={handleClick}
+        />
+        <label htmlFor="check" onClick={handleClick}>
+          show password
+        </label>
+        <Button value="Log in" onClick={SubmitHandler} />
+      </form>
     </div>
   );
 };

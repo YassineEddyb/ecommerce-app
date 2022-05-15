@@ -18,17 +18,11 @@
     background-color: $back-light;
     position: absolute;
     height: 100%;
-    width: 400px;
     top: 0;
-    right: 0;
+    max-width: 400px;
     z-index: 999;
     position: fixed;
     overflow: auto;
-    transform: translate(100%);
     transition: 0.5s ease-in-out;
-  }
-
-  .side-bar-open {
-    transform: translate(0);
   }
 }

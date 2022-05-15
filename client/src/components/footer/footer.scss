@@ -1,16 +1,16 @@
 @import "../../main.scss";
+@import "../../assets/styles/breakpoints.scss";
 
 .footer {
   padding: 3rem;
-  display: flex;
   width: 100%;
+  text-align: center;
   justify-content: space-around;
-  margin-top: 100px;
-  height: 400px;
   background-color: $back-light;
 
   .credintials {
-    width: 200px;
+    margin: auto;
+    max-width: 200px;
     .logo {
       margin-bottom: 1.5rem;
     }
@@ -38,6 +38,7 @@
   }
 
   .customer-services {
+    margin: 1.5rem 0;
     h6 {
       font-size: 1.1rem;
       font-weight: 400;
@@ -54,6 +55,19 @@
           color: $main-color;
         }
       }
+    }
+  }
+}
+
+@include breakpoint-up(md) {
+  .footer {
+    display: flex;
+    text-align: left;
+    .credintials {
+      margin: 0;
+    }
+    .customer-services {
+      margin: 0;
     }
   }
 }

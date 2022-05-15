@@ -1,12 +1,13 @@
 @import "../../main.scss";
+@import "../../assets/styles/breakpoints.scss";
 
 .product-page {
+  width: 90%;
+  margin: 5rem auto;
   margin-top: 2rem;
-  display: flex;
 
   .details {
-    width: 50%;
-    padding-right: 3rem;
+    padding: 1rem;
 
     .price {
       margin: 1.5rem 0;
@@ -14,7 +15,6 @@
 
     .quantity-title {
       margin: 1.5rem 0;
-      user-select: none;
     }
 
     .desc {
@@ -25,6 +25,25 @@
         color: #000;
         margin-bottom: 1rem;
       }
+    }
+  }
+}
+
+@include breakpoint-up(md) {
+  .product-page {
+    display: flex;
+  }
+
+  .details {
+    width: 50%;
+  }
+}
+
+@include breakpoint-down(md) {
+  .details {
+    text-align: center;
+    .quantity {
+      margin: auto;
     }
   }
 }

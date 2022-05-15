@@ -21,7 +21,7 @@ function ProductPage() {
         <h4 className="price">$ {product.price}</h4>
         <div className="quantity-title">
           <span>Quantity:</span>
-          <Quantity product={product} />
+          <Quantity className="quantity-cmp" product={product} />
         </div>
         <Button value="Add To Cart" />
         <div className="desc">

@@ -18,7 +18,6 @@ function ProductGalory({ images }) {
                 }}
                 alt="image"
               />
-              ;
             </div>
           );
         })}

@@ -4,3 +4,20 @@ $back-dark: #b3b3b3;
 $text-color: #777;
 $bold-text-color: #444;
 $light-color: rgb(216, 215, 215);
+
+/* breakpointes */
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+) !default;
+
+.header-text {
+  font-size: 1rem;
+  letter-spacing: 2px;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $light-color;
+  margin-bottom: 1.5rem;
+}
