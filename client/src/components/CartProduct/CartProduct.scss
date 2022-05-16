@@ -17,6 +17,9 @@
     padding: 1rem;
     h5 {
       margin-bottom: 0.5rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 

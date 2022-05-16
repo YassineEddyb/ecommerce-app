@@ -1,13 +1,14 @@
 import React from "react";
 import "./button.scss";
 
-function Button({ value, width }) {
+function Button({ value, width, clickHandler }) {
   return (
     <div>
       <button
         type="button"
         className="btn"
-        style={width ? { width: width } : null}
+        style={width ? width : null}
+        onClick={clickHandler}
       >
         {value}
       </button>

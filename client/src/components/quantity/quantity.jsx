@@ -4,10 +4,10 @@ import "./quantity.scss";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import UserContext from "../../context/userContext";
 
-function Quantity({ product, update }) {
+function Quantity({ product, update, quantity, setQuantity }) {
   const { user, setUser } = useContext(UserContext);
-  const item = user.cart.find((el) => product._id === el.product._id);
-  let [quantity, setQuantity] = useState(item?.quantity);
+  const item = user.cart?.find((el) => product._id === el.product._id);
+  // let [quantity, setQuantity] = useState(item?.quantity || 0);
 
   if (update) quantity = item?.quantity;
 

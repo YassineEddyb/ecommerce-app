@@ -32,6 +32,7 @@ const Login = () => {
         password: data.password,
       });
       localStorage.setItem("jwt", res.data.token);
+      console.log(res.data);
     } catch (err) {
       console.log(err.response.data.message);
     }
@@ -57,7 +58,7 @@ const Login = () => {
         <label htmlFor="check" onClick={handleClick}>
           show password
         </label>
-        <Button value="Log in" onClick={SubmitHandler} />
+        <Button value="Log in" clickHandler={SubmitHandler} />
       </form>
     </div>
   );

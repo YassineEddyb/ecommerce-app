@@ -9,11 +9,11 @@ function ProductGalory({ images }) {
       <div className="images">
         {images.map((el, idx) => {
           return (
-            <div className="image">
+            <div key={idx} className="image">
               <img
                 src={el}
                 key={idx}
-                onClick={(e) => {
+                onClick={() => {
                   setImage(el);
                 }}
                 alt="image"

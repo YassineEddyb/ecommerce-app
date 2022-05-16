@@ -12,7 +12,7 @@ function ProductCard({ item }) {
   let el;
 
   const addProductToCart = async () => {
-    if ((el = user.cart.find((el) => el.product._id == item._id))) {
+    if ((el = user.cart?.find((el) => el.product._id == item._id))) {
       el.quantity += 1;
       setUser({ ...user, cart: [...user.cart] });
     } else if (user.cart)

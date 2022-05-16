@@ -33,6 +33,11 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        height: 100%;
+        &:hover {
+          background-color: rgba(256, 256, 256, 0.7);
+          color: #000;
+        }
         span {
           font-size: 0.8rem;
           margin-left: 6px;
@@ -44,6 +49,10 @@
         display: grid;
         place-items: center;
         border-left: 1px solid #aaa;
+        &:hover {
+          background-color: rgba(256, 256, 256, 0.7);
+          color: #000;
+        }
       }
     }
     img {

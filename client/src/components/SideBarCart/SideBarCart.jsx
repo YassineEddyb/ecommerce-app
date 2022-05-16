@@ -4,6 +4,7 @@ import "./SideBarCart.scss";
 import SideBar from "../SideBar/SideBar";
 import userContext from "../../context/userContext";
 import CartProduct from "../CartProduct/CartProduct";
+import Button from "../button/button";
 
 function SideBarCart({ sideBar, toggleSideBar }) {
   const { user } = useContext(userContext);
@@ -15,10 +16,24 @@ function SideBarCart({ sideBar, toggleSideBar }) {
     <SideBar sideBar={sideBar} toggleSideBar={toggleSideBar}>
       <div className="side-bar-cart">
         <h3 className="title">CART</h3>
-        {user.cart?.map((el, idx) => {
-          return <CartProduct key={idx} item={el} />;
-        })}
+        {user.cart?.length > 0 ? (
+          user.cart?.map((el, idx) => {
+            return <CartProduct key={idx} item={el} />;
+          })
+        ) : (
+          <div className="empty">No Items In Cart</div>
+        )}
       </div>
+      <Button
+        className="btn"
+        value="Checkout"
+        width={{
+          width: "80%",
+          position: "fixed",
+          bottom: "2rem",
+          left: "2.3rem",
+        }}
+      />
     </SideBar>
   );
 }
