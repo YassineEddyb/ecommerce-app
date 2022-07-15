@@ -4,7 +4,7 @@
 
 #slider {
   width: 100%;
-  height: calc(100vh - 60px);
+  height: calc(100vh - $header-height);
   background-color: $back-light;
   position: relative;
   font-family: "Source Sans Pro", sans-serif;
@@ -59,7 +59,7 @@
     // background-color: aqua;
 
     h1 {
-      font-size: 110px;
+      font-size: 100px;
     }
 
     .button {

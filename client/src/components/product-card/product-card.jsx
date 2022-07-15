@@ -7,7 +7,7 @@ import { BiShowAlt } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import UserContext from "../../context/userContext";
 
-function ProductCard({ item }) {
+function ProductCard({ item, shadow }) {
   const { user, setUser } = useContext(UserContext);
   let el;
 
@@ -23,7 +23,7 @@ function ProductCard({ item }) {
   };
 
   return (
-    <div className="product">
+    <div className={`product ${shadow ? "shadow" : null}`}>
       <div className="image">
         <div className="tools">
           <div className="add-to-cart" onClick={addProductToCart}>

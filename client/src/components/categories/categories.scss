@@ -1,16 +1,22 @@
 @import "../../main.scss";
 
 .categories {
-  background-color: $back-light;
-  list-style: none;
+  width: 90%;
+  padding: 5rem 0;
+  margin: auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  li {
-    padding: 10px 10px;
-    &:hover {
-      background-color: $back-dark;
-    }
-  }
+  justify-content: space-between;
 }
+
+// background-color: $back-light;
+// list-style: none;
+// display: flex;
+// justify-content: center;
+// align-items: center;
+// height: 50px;
+// li {
+//   padding: 10px 10px;
+//   &:hover {
+//     background-color: $back-dark;
+//   }
+// }

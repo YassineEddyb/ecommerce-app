@@ -50,22 +50,6 @@ const Slider = () => {
           initial="hidden"
           animate="visible"
         >
-          <img src={img1} alt="model" />
-        </motion.dev>
-        <motion.dev
-          className="img"
-          variants={item}
-          initial="hidden"
-          animate="visible"
-        >
-          <img src={img2} alt="model" />
-        </motion.dev>
-        <motion.dev
-          className="img"
-          variants={item}
-          initial="hidden"
-          animate="visible"
-        >
           <img src={img3} alt="model" />
         </motion.dev>
         <motion.dev
@@ -74,7 +58,23 @@ const Slider = () => {
           initial="hidden"
           animate="visible"
         >
+          <img src={img1} alt="model" />
+        </motion.dev>
+        <motion.dev
+          className="img"
+          variants={item}
+          initial="hidden"
+          animate="visible"
+        >
           <img src={img4} alt="model" />
+        </motion.dev>
+        <motion.dev
+          className="img"
+          variants={item}
+          initial="hidden"
+          animate="visible"
+        >
+          <img src={img2} alt="model" />
         </motion.dev>
       </div>
       <div className="title">
@@ -88,7 +88,7 @@ const Slider = () => {
           <h1>SHINING</h1>
         </div>
       </div>
-      <motion.div
+      {/* <motion.div
         style={hover.hover ? { display: "block" } : null}
         animate={{
           x: hover.x,
@@ -96,7 +96,7 @@ const Slider = () => {
           transition: { duration: 1, ease: "backOut" },
         }}
         className="circle"
-      ></motion.div>
+      ></motion.div> */}
     </motion.section>
   );
 };
