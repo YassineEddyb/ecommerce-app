@@ -1,14 +1,27 @@
 @import "../../main.scss";
+@import "../../assets/styles/breakpoints.scss";
 
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap");
 
 #slider {
   width: 100%;
-  height: calc(100vh - $header-height);
+  height: 600px;
   background-color: $back-light;
   position: relative;
   font-family: "Source Sans Pro", sans-serif;
   overflow: hidden;
+
+  .link {
+    text-decoration: none;
+    display: grid;
+    place-items: center;
+    width: 200px;
+    height: 60px;
+    cursor: pointer;
+    border-radius: 30px;
+    background-color: $main-color;
+    color: #fff;
+  }
 
   .images {
     width: 100%;
@@ -49,17 +62,46 @@
     }
   }
 
-  .title {
+  .title-small {
+    position: absolute;
+    width: 90%;
+    height: 70%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    p {
+      margin-bottom: 2rem;
+      font-size: clamp(15px, 2vw, 100px);
+    }
+
+    .link {
+      margin: auto;
+    }
+
+    h2 {
+      font-size: clamp(35px, 8vw, 100px);
+      white-space: nowrap;
+    }
+  }
+
+  .title-large {
     position: absolute;
     width: 50%;
     height: 70%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    // background-color: aqua;
+    // overflow: hidden;
+
+    h1:first-child {
+      word-spacing: 0.7rem;
+    }
 
     h1 {
-      font-size: 100px;
+      font-size: 8vw;
+      white-space: nowrap;
     }
 
     .button {
@@ -67,15 +109,6 @@
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-
-      button {
-        width: 200px;
-        height: 60px;
-        cursor: pointer;
-        border-radius: 30px;
-        background-color: $main-color;
-        color: #fff;
-      }
     }
 
     .sub-title {
@@ -86,7 +119,7 @@
 
       p {
         width: 300px;
-        font-size: 18px;
+        font-size: 1.5vw;
       }
     }
   }
@@ -99,5 +132,21 @@
     border-radius: 50%;
     background-color: #333;
     display: none;
+  }
+}
+
+@include breakpoint-down(md) {
+  #slider {
+    .images {
+      display: none;
+    }
+  }
+}
+
+@include breakpoint-down(sm) {
+  #slider {
+    .title {
+      width: 70%;
+    }
   }
 }

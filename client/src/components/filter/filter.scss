@@ -7,11 +7,14 @@
   padding-left: 1rem;
   padding-top: 20px;
 
+  .title {
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+    color: $text-color;
+  }
+
   .gender {
     margin-top: 1rem;
     margin-bottom: 1rem;
-    .title {
-      margin-left: 1rem;
-    }
   }
 }

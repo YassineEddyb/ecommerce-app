@@ -1,4 +1,5 @@
 @import "../../main.scss";
+@import "../../assets/styles/breakpoints.scss";
 
 .header {
   height: $header-height;
@@ -16,6 +17,24 @@
     align-items: center;
     h1 {
       cursor: pointer;
+    }
+  }
+
+  .categories-list {
+    cursor: pointer;
+    background-color: $back-light;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    .link {
+      color: $bold-text-color;
+      text-decoration: none;
+      padding: 10px 10px;
+      &:hover {
+        color: $main-color;
+      }
     }
   }
 
@@ -92,6 +111,17 @@
         position: absolute;
         top: 2px;
         right: -8px;
+      }
+    }
+  }
+}
+
+@include breakpoint-down(sm) {
+  .header {
+    .categories-list {
+      display: none;
+      .link {
+        display: none;
       }
     }
   }

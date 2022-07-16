@@ -17,19 +17,16 @@
       align-items: center;
       justify-content: space-between;
       .filter-icon {
-        // display: none;
         cursor: pointer;
         font-size: 1.5rem;
+      }
+      .sort {
       }
     }
   }
 }
 
 @include breakpoint-down(md) {
-  // .filters {
-  //   display: none;
-  // }
-
   .filter-icon {
     display: block;
   }

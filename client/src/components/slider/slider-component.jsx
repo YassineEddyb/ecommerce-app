@@ -1,12 +1,25 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-
+import React, { useState, useContext } from "react";
 import "./slider.styles.scss";
+
+import { motion } from "framer-motion";
+import GlobalContext from "../../context/globalContext";
 
 import img1 from "../../images/slider-1.jpg";
 import img2 from "../../images/slider-2.jpg";
 import img3 from "../../images/slider-3.jpg";
 import img4 from "../../images/slider-4.jpg";
+import { Link } from "react-router-dom";
+
+const item = {
+  hidden: {
+    opacity: 0,
+    y: 100,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+  },
+};
 
 const Slider = () => {
   const [hover, setHover] = useState({
@@ -14,23 +27,7 @@ const Slider = () => {
     x: 0,
     y: 0,
   });
-
-  const item = {
-    hidden: {
-      opacity: 0,
-      y: 100,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      //transition: {
-      //   type: "spring",
-      //   stiffness: 20,
-      //   bounce: 10,
-      //   //  damping: 300,
-      // },
-    },
-  };
+  const { isMobile } = useContext(GlobalContext);
 
   const handleMove = (e) => {
     setHover({ hover: true, x: e.clientX - 40, y: e.clientY - 100 });
@@ -44,14 +41,14 @@ const Slider = () => {
       onMouseMove={handleMove}
     >
       <div className="images">
-        <motion.dev
+        <motion.div
           className="img"
           variants={item}
           initial="hidden"
           animate="visible"
         >
-          <img src={img3} alt="model" />
-        </motion.dev>
+          <img src={img2} alt="model" />
+        </motion.div>
         <motion.dev
           className="img"
           variants={item}
@@ -74,20 +71,34 @@ const Slider = () => {
           initial="hidden"
           animate="visible"
         >
-          <img src={img2} alt="model" />
+          <img src={img3} alt="model" />
         </motion.dev>
       </div>
-      <div className="title">
-        <h1>BAY THIS NOW</h1>
-        <div className="button">
-          <h1>BECOME</h1>
-          <button>BUY NOW</button>
-        </div>
-        <div className="sub-title">
+      {isMobile ? (
+        <div className="title-small">
+          <h2>BAY THIS NOW</h2>
+          <h2>BECOME SHINING</h2>
           <p>large selection of men and women clothes at afordable prices</p>
-          <h1>SHINING</h1>
+          <Link className="link" to="/shop">
+            SHOP NOW
+          </Link>
         </div>
-      </div>
+      ) : (
+        <div className="title-large">
+          <h1>BAY THIS NOW</h1>
+          <div className="button">
+            <h1>BECOME</h1>
+            <Link className="link" to="/shop">
+              SHOP NOW
+            </Link>
+          </div>
+          <div className="sub-title">
+            <p>large selection of men and women clothes at afordable prices</p>
+            <h1>SHINING</h1>
+          </div>
+        </div>
+      )}
+
       {/* <motion.div
         style={hover.hover ? { display: "block" } : null}
         animate={{

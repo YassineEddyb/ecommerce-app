@@ -11,6 +11,13 @@ function Filter() {
         <Checkbox className="option" name="Men" />
         <Checkbox className="option" name="Women" />
       </div>
+      <div className="large">
+        <h4 className="title">Size</h4>
+        <Checkbox className="option" name="ms" radio />
+        <Checkbox className="option" name="md" radio />
+        <Checkbox className="option" name="lg" radio />
+        <Checkbox className="option" name="xl" radio />
+      </div>
     </div>
   );
 }

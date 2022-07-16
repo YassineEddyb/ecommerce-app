@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./category.scss";
 
-function Category({ title }) {
+function Category({ item }) {
   return (
-    <div className="category">
-      <h1>{title}</h1>
-    </div>
+    <Link to="/shop" className="category">
+      <img src={item.img} alt={item.title} />
+    </Link>
   );
 }
 

@@ -1,5 +1,6 @@
 // global colors
 $main-color: #51a767;
+$main-color-light: #90d3a1;
 $back-light: #ebe7e6;
 $back-dark: #b3b3b3;
 $text-color: #777;
@@ -11,7 +12,6 @@ $header-height: 80px;
 
 /* breakpointes */
 $grid-breakpoints: (
-  xs: 0,
   sm: 576px,
   md: 768px,
   lg: 992px,

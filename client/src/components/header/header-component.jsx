@@ -23,6 +23,17 @@ const Header = () => {
         <Link className="logo" to="/">
           <h1>LOGO</h1>
         </Link>
+        <ul className="categories-list">
+          <Link to="/shop" className="link">Men's</Link>
+          <Link to="/shop" className="link">Women's</Link>
+          <Link to="/shop" className="link">Kids</Link>
+          <Link to="/shop" className="link">T-shirts</Link>
+          <Link to="/shop" className="link">Hats</Link>
+          <Link to="/shop" className="link">Jeans</Link>
+          <Link to="/shop" className="link">Pants</Link>
+          <Link to="/shop" className="link">Shoes</Link>
+          <Link to="/shop" className="link">Shirts</Link>
+        </ul>
         <nav>
           <Link className="icon search" to="/shop">
             <FiSearch />
