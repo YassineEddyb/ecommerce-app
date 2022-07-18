@@ -48,7 +48,7 @@ function Profile({ user }) {
       </div>
       <Button
         value="Save Changes"
-        // styles={{ width: "40px" }}
+        styles={{ width: "100%", maxWidth: "300px", marginTop: "2rem" }}
         clickHandler={handleChange}
       />
     </form>

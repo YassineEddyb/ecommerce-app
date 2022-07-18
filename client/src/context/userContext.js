@@ -7,7 +7,7 @@ const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
-  const { setIsAuth } = useContext(GlobalContext);
+  const { setIsAuth, setIsLoading } = useContext(GlobalContext);
 
   useEffect(() => {
     const updateUser = async () => {
@@ -25,6 +25,7 @@ export const UserProvider = ({ children }) => {
   }, [user]);
 
   useEffect(() => {
+    setIsLoading(true);
     const fetchUser = async () => {
       try {
         const res = await axios.get("api/users/me", {
@@ -34,8 +35,10 @@ export const UserProvider = ({ children }) => {
         });
         setUser(res.data.user);
         setIsAuth(true);
+        setIsLoading(false);
       } catch (err) {
         console.log(err);
+        setIsLoading(false);
       }
     };
     fetchUser();

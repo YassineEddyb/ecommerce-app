@@ -16,28 +16,39 @@ import { ProductProvider } from "./context/productsContext";
 import { UserProvider } from "./context/userContext";
 import ProtectedRoutes from "./utils/protectedRoutes";
 import HomeRedirect from "./utils/homeRedirect";
+import Loader from "./components/Loader/Loader";
+
+import GlobalContext from "./context/globalContext";
 
 function App() {
+  const { isLoading } = useContext(GlobalContext);
+
+  console.log(isLoading);
+
   return (
     <div className="App">
       <ProductProvider>
         <UserProvider>
-          <Router>
-            <Header />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route element={<HomeRedirect />}>
-                <Route exact path="/login" element={<Login />} />
-                <Route exact path="/signup" element={<SignUp />} />
-              </Route>
-              <Route exact path="/shop" element={<Shop />} />
-              <Route path="/product/:id" element={<ProductPage />} />
-              <Route element={<ProtectedRoutes />}>
-                <Route exact path="/account" element={<Account />} />
-              </Route>
-            </Routes>
-            <Footer />
-          </Router>
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <Router>
+              <Header />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route element={<HomeRedirect />}>
+                  <Route exact path="/login" element={<Login />} />
+                  <Route exact path="/signup" element={<SignUp />} />
+                </Route>
+                <Route exact path="/shop" element={<Shop />} />
+                <Route path="/product/:id" element={<ProductPage />} />
+                <Route element={<ProtectedRoutes />}>
+                  <Route exact path="/account" element={<Account />} />
+                </Route>
+              </Routes>
+              <Footer />
+            </Router>
+          )}
         </UserProvider>
       </ProductProvider>
     </div>
