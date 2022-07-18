@@ -5,8 +5,15 @@ import axios from "../../utils/axiosConfig";
 import Button from "../../components/button/button";
 import Input from "../../components/Input/input";
 
+import { useNavigate } from "react-router";
+import userContext from "../../context/userContext";
+import GlobalContext from "../../context/globalContext";
+
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
+  const { setUser } = useContext(userContext);
+  const { setIsAuth } = useContext(GlobalContext);
+  const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
 
   const changeHandler = (e) => {
@@ -32,7 +39,10 @@ const Login = () => {
         password: data.password,
       });
       localStorage.setItem("jwt", res.data.token);
-      console.log(res.data);
+      // setUser({});
+      setIsAuth(true);
+      navigate("/");
+      window.location.reload();
     } catch (err) {
       console.log(err.response.data.message);
     }

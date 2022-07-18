@@ -1,11 +1,13 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 
 import axios from "../utils/axiosConfig";
+import GlobalContext from "./globalContext";
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  const { setIsAuth } = useContext(GlobalContext);
 
   useEffect(() => {
     const updateUser = async () => {
@@ -31,6 +33,7 @@ export const UserProvider = ({ children }) => {
           },
         });
         setUser(res.data.user);
+        setIsAuth(true);
       } catch (err) {
         console.log(err);
       }

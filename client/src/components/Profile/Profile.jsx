@@ -4,7 +4,6 @@ import "./Profile.scss";
 import Button from "../button/button";
 
 function Profile({ user }) {
-  console.log(user);
   const [credintials, setCredintials] = useState({
     name: user.name,
     email: user.email,
@@ -18,7 +17,7 @@ function Profile({ user }) {
   };
 
   return (
-    <div className="profile">
+    <form className="profile">
       <h4>My Profile</h4>
       <div className="input name">
         <h6>Name</h6>
@@ -47,8 +46,12 @@ function Profile({ user }) {
           onChange={handleChange}
         />
       </div>
-      <Button value="Save Changes" width="40%" />
-    </div>
+      <Button
+        value="Save Changes"
+        // styles={{ width: "40px" }}
+        clickHandler={handleChange}
+      />
+    </form>
   );
 }
 

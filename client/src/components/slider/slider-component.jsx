@@ -49,30 +49,30 @@ const Slider = () => {
         >
           <img src={img2} alt="model" />
         </motion.div>
-        <motion.dev
+        <motion.div
           className="img"
           variants={item}
           initial="hidden"
           animate="visible"
         >
           <img src={img1} alt="model" />
-        </motion.dev>
-        <motion.dev
+        </motion.div>
+        <motion.div
           className="img"
           variants={item}
           initial="hidden"
           animate="visible"
         >
           <img src={img4} alt="model" />
-        </motion.dev>
-        <motion.dev
+        </motion.div>
+        <motion.div
           className="img"
           variants={item}
           initial="hidden"
           animate="visible"
         >
           <img src={img3} alt="model" />
-        </motion.dev>
+        </motion.div>
       </div>
       {isMobile ? (
         <div className="title-small">

@@ -4,26 +4,28 @@
 .product-page {
   width: 90%;
   margin: 5rem auto;
-  margin-top: 2rem;
 
-  .details {
-    padding: 1rem;
+  .flex-container {
+    margin-bottom: 7rem;
+    .details {
+      padding: 1rem;
 
-    .price {
-      margin: 1.5rem 0;
-    }
+      .price {
+        margin: 1.5rem 0;
+      }
 
-    .quantity-title {
-      margin: 1.5rem 0;
-    }
+      .quantity-title {
+        margin: 1.5rem 0;
+      }
 
-    .desc {
-      color: $text-color;
-      margin-top: 2rem;
-      span {
-        display: block;
-        color: #000;
-        margin-bottom: 1rem;
+      .desc {
+        color: $text-color;
+        margin-top: 2rem;
+        span {
+          display: block;
+          color: #000;
+          margin-bottom: 1rem;
+        }
       }
     }
   }
@@ -31,7 +33,9 @@
 
 @include breakpoint-up(md) {
   .product-page {
-    display: flex;
+    .flex-container {
+      display: flex;
+    }
   }
 
   .details {

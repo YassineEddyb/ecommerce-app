@@ -4,6 +4,8 @@ const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
   const [isMobile, setIsMobile] = useState(false);
+  const [isAuth, setIsAuth] = useState(false);
+
 
   const handleResize = () => {
     if (window.innerWidth < 720) {
@@ -18,7 +20,7 @@ export const GlobalProvider = ({ children }) => {
   });
 
   return (
-    <GlobalContext.Provider value={{ isMobile }}>
+    <GlobalContext.Provider value={{ isMobile, isAuth, setIsAuth }}>
       {children}
     </GlobalContext.Provider>
   );

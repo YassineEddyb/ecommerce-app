@@ -17,4 +17,14 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
+
+  .price-range {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    .slide {
+      color: $main-color;
+      width: 90%;
+      margin-left: 1rem;
+    }
+  }
 }
