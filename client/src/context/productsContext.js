@@ -1,33 +1,31 @@
-import { createContext, useState, useEffect } from "react";
-import axios from "axios";
+import { createContext, useState, useEffect, useContext } from "react";
+
+import axios from "../utils/axiosConfig";
+import GlobalContext from "./globalContext";
 
 const ProductContext = createContext();
 
-import products from "../utils/products-data";
-
-// const headers = {
-//   "Content-Type": "application/json",
-// };
-
-// const url = "http://localhost:5000/api/products";
-
 export const ProductProvider = ({ children }) => {
-  // const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+  const { setIsLoading } = useContext(GlobalContext);
 
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     try {
-  //       const result = await axios.get(url, { headers });
-  //       setProducts(result.data.products);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   };
-  //   fetchProducts();
-  // }, []);
+  useEffect(() => {
+    setIsLoading(true);
+    const fetchProducts = async () => {
+      try {
+        const result = await axios.get("/api/products");
+        setProducts(result.data.products);
+        setIsLoading(false);
+      } catch (err) {
+        console.log(err);
+        setIsLoading(false);
+      }
+    };
+    fetchProducts();
+  }, []);
 
   return (
-    <ProductContext.Provider value={{ products }}>
+    <ProductContext.Provider value={{ products, setProducts }}>
       {children}
     </ProductContext.Provider>
   );

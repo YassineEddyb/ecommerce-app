@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./popular-products.scss";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 import ProductCard from "../product-card/product-card";
-import products from "../../utils/products-data";
+// import products from "../../utils/products-data";
+
+import ProductContext from "../../context/productsContext";
 
 const responsive = {
   desktop: {
@@ -28,6 +30,7 @@ const responsive = {
 
 function PopularPorducts({ title }) {
   const [isMobile, setIsMobile] = useState(false);
+  const { products } = useContext(ProductContext);
 
   const handleResize = () => {
     if (window.innerWidth < 720) {

@@ -23,10 +23,10 @@ function Filter() {
       </div>
       <div className="size">
         <h4 className="title">Size</h4>
-        <Checkbox className="option" name="ms" radio />
-        <Checkbox className="option" name="md" radio />
-        <Checkbox className="option" name="lg" radio />
-        <Checkbox className="option" name="xl" radio />
+        <Checkbox className="option" name="S" radio />
+        <Checkbox className="option" name="M" radio />
+        <Checkbox className="option" name="L" radio />
+        <Checkbox className="option" name="XL" radio />
       </div>
       <div className="price-range">
         <h4 className="title">Price</h4>

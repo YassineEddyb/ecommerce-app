@@ -21,15 +21,13 @@ import Loader from "./components/Loader/Loader";
 import GlobalContext from "./context/globalContext";
 
 function App() {
-  const { isLoading } = useContext(GlobalContext);
-
-  console.log(isLoading);
+  const { initLoading } = useContext(GlobalContext);
 
   return (
     <div className="App">
       <ProductProvider>
         <UserProvider>
-          {isLoading ? (
+          {initLoading ? (
             <Loader />
           ) : (
             <Router>

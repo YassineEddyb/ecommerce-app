@@ -31,7 +31,6 @@ const Slider = () => {
 
   const handleMove = (e) => {
     setHover({ hover: true, x: e.clientX - 40, y: e.clientY - 100 });
-    console.log(hover.hover);
   };
 
   return (
@@ -98,16 +97,6 @@ const Slider = () => {
           </div>
         </div>
       )}
-
-      {/* <motion.div
-        style={hover.hover ? { display: "block" } : null}
-        animate={{
-          x: hover.x,
-          y: hover.y,
-          transition: { duration: 1, ease: "backOut" },
-        }}
-        className="circle"
-      ></motion.div> */}
     </motion.section>
   );
 };
