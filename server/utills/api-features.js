@@ -22,10 +22,22 @@ class ApiFeatures {
   }
 
   category() {
-    const category = this.query.category;
-    console.log(category);
+    let category = this.query.category;
     if (category) {
-      this.obj.find({ categories: category });
+      category = category.split(",");
+      this.obj.find({ categories: { $in: category }});
+    }
+
+    return this;
+  }
+
+  price() {
+    let price = this.query.price;
+    if (price) {
+      price = price.split(",");
+      this.obj.find({
+        price: { $gt: parseInt(price[0]), $lt: parseInt(price[1]) },
+      });
     }
 
     return this;
