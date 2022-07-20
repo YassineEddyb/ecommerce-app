@@ -6,7 +6,10 @@ const catchAsync = require("../utills/catchAsync");
 const ApiFeatures = require("../utills/api-features");
 
 exports.getAllProducts = async (req, res, next) => {
-  const filter = new ApiFeatures(Product.find(), req.query).category();
+  const filter = new ApiFeatures(Product.find(), req.query)
+    .category()
+    .price()
+    .size();
 
   const products = await filter.obj;
 

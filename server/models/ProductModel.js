@@ -23,6 +23,7 @@ const productSchema = mongoose.Schema({
     max: 5,
   },
   categories: [String],
+  size: [String],
   createdAt: { type: Date, default: Date.now() },
 });
 

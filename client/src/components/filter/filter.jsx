@@ -1,16 +1,33 @@
-import React from "react";
+import React, { useEffect, useContext } from "react";
 import "./filter.scss";
 
 import Checkbox from "../CheckBox/checkbox";
 import Slider from "@material-ui/core/Slider";
+import axios from "../../utils/axiosConfig";
+import GlobalContext from "../../context/globalContext";
+import ProductContext from "../../context/productsContext";
 
 function Filter() {
-  // Our States
   const [value, setValue] = React.useState([0, 100]);
+  const { setProducts } = useContext(ProductContext);
+  const { setIsLoading } = useContext(GlobalContext);
 
-  // Changing State when volume increases/decreases
   const rangeSelector = (event, newValue) => {
     setValue(newValue);
+    setIsLoading(true);
+    const fetchProducts = async () => {
+      try {
+        const res = await axios.get(
+          `/api/products?price=${value[0]},${value[1]}`
+        );
+        setProducts(res.data.products);
+        setIsLoading(false);
+      } catch (err) {
+        console.log(err);
+        setIsLoading(false);
+      }
+    };
+    fetchProducts();
   };
 
   return (

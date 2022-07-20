@@ -20,8 +20,10 @@
   }
 
   .price-range {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin: 1rem 0;
+    .title {
+      margin-left: 0;
+    }
     padding: 0 1rem;
     .slide {
       color: $main-color;
