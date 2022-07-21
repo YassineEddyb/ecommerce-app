@@ -43,8 +43,9 @@ function CategoryList() {
 
   return (
     <ul className="categories-list">
-      {categories.map((category) => (
+      {categories.map((category, idx) => (
         <Link
+          key={idx}
           name={category}
           to="/shop/"
           className="link"

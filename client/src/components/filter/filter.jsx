@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./filter.scss";
 
 import Checkbox from "../CheckBox/checkbox";
@@ -7,18 +7,46 @@ import axios from "../../utils/axiosConfig";
 import GlobalContext from "../../context/globalContext";
 import ProductContext from "../../context/productsContext";
 
+const getObjectasString = (filter) => {
+  let str = "";
+  Object.keys(filter).forEach((el) => {
+    if (filter[el]) {
+      str += el + ",";
+    }
+  });
+  return str;
+};
+
 function Filter() {
   const [value, setValue] = React.useState([0, 100]);
   const { setProducts } = useContext(ProductContext);
   const { setIsLoading } = useContext(GlobalContext);
+  const [filters, setFilters] = useState({
+    men: false,
+    women: false,
+    hats: false,
+    "t-shirts": false,
+    shoes: false,
+    hoodies: false,
+    pants: false,
+  });
+  const [sizes, setSizes] = useState({
+    s: false,
+    m: false,
+    l: false,
+    xl: false,
+  });
 
-  const rangeSelector = (event, newValue) => {
-    setValue(newValue);
+  useEffect(() => {
     setIsLoading(true);
     const fetchProducts = async () => {
       try {
         const res = await axios.get(
-          `/api/products?price=${value[0]},${value[1]}`
+          `/api/products?price=${value[0]},${
+            value[1]
+          }&category=${getObjectasString(filters)}&size=${getObjectasString(
+            sizes
+          )}`
         );
         setProducts(res.data.products);
         setIsLoading(false);
@@ -28,6 +56,20 @@ function Filter() {
       }
     };
     fetchProducts();
+  }, [value, filters, sizes]);
+
+  const handleCategory = (e) => {
+    const name = e.target.id;
+    setFilters({ ...filters, [name]: !filters[name] });
+  };
+
+  const handleSize = (e) => {
+    const name = e.target.id;
+    setSizes({ ...sizes, [name]: !sizes[name] });
+  };
+
+  const rangeSelector = (event, newValue) => {
+    setValue(newValue);
   };
 
   return (
@@ -35,15 +77,52 @@ function Filter() {
       <h3 className="header-text">FILTERS</h3>
       <div className="gender">
         <h4 className="title">Gender</h4>
-        <Checkbox className="option" name="Men" />
-        <Checkbox className="option" name="Women" />
+        <Checkbox handleChange={handleCategory} className="option" name="men" />
+        <Checkbox
+          handleChange={handleCategory}
+          className="option"
+          name="women"
+        />
+      </div>
+      <div className="categories-filter">
+        <h4 className="title">Categories</h4>
+        <Checkbox
+          handleChange={handleCategory}
+          className="option"
+          name="t-shirts"
+        />
+        <Checkbox
+          handleChange={handleCategory}
+          className="option"
+          name="hoodies"
+        />
+        <Checkbox
+          handleChange={handleCategory}
+          className="option"
+          name="hats"
+        />
+        <Checkbox
+          handleChange={handleCategory}
+          className="option"
+          name="pants"
+        />
+        <Checkbox
+          handleChange={handleCategory}
+          className="option"
+          name="shoes"
+        />
       </div>
       <div className="size">
         <h4 className="title">Size</h4>
-        <Checkbox className="option" name="S" radio />
-        <Checkbox className="option" name="M" radio />
-        <Checkbox className="option" name="L" radio />
-        <Checkbox className="option" name="XL" radio />
+        <Checkbox handleChange={handleSize} className="option" name="S" radio />
+        <Checkbox handleChange={handleSize} className="option" name="M" radio />
+        <Checkbox handleChange={handleSize} className="option" name="L" radio />
+        <Checkbox
+          handleChange={handleSize}
+          className="option"
+          name="XL"
+          radio
+        />
       </div>
       <div className="price-range">
         <h4 className="title">Price</h4>

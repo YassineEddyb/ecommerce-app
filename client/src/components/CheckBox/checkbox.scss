@@ -1,14 +1,17 @@
 @import "../../main.scss";
 
 .checkbox {
+  display: flex;
+  align-items: center;
   margin-left: 2rem;
-  input {
-    accent-color: $main-color;
-    margin-right: 8px;
+  .box {
+    // accent-color: $main-color;
     cursor: pointer;
+    height: 30px;
   }
 
   label {
+    font-size: 14px;
     cursor: pointer;
     color: $text-color;
   }

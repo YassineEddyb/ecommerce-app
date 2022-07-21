@@ -4,7 +4,6 @@
   // background-color: $back-light;
   width: 250px;
   height: calc(100vh - 110px);
-
   padding-left: 1rem;
   padding-top: 20px;
 
@@ -16,6 +15,10 @@
 
   .gender {
     margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .categories-filter {
     margin-bottom: 1rem;
   }
 
