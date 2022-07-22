@@ -7,6 +7,8 @@ import axios from "../../utils/axiosConfig";
 import GlobalContext from "../../context/globalContext";
 import ProductContext from "../../context/productsContext";
 
+import { useLocation } from "react-router-dom";
+
 const getObjectasString = (filter) => {
   let str = "";
   Object.keys(filter).forEach((el) => {
@@ -17,7 +19,7 @@ const getObjectasString = (filter) => {
   return str;
 };
 
-function Filter() {
+function Filter(props) {
   const [value, setValue] = React.useState([0, 100]);
   const { setProducts } = useContext(ProductContext);
   const { setIsLoading } = useContext(GlobalContext);
@@ -36,13 +38,15 @@ function Filter() {
     l: false,
     xl: false,
   });
+  const search = useLocation().search;
+  const query = new URLSearchParams(search).get("q");
 
   useEffect(() => {
     setIsLoading(true);
     const fetchProducts = async () => {
       try {
         const res = await axios.get(
-          `/api/products?price=${value[0]},${
+          `/api/products?q=${query ? query : ""}&price=${value[0]},${
             value[1]
           }&category=${getObjectasString(filters)}&size=${getObjectasString(
             sizes
@@ -56,7 +60,7 @@ function Filter() {
       }
     };
     fetchProducts();
-  }, [value, filters, sizes]);
+  }, [value, filters, sizes, query]);
 
   const handleCategory = (e) => {
     const name = e.target.id;

@@ -164,6 +164,100 @@ const products = [
     categories: ["men", "women", "hoodies"],
     size: ["S", "L", "XL"],
   },
+  {
+    _id: 10,
+    title: "Marius Perforated Dress Booties, Created for Macy's",
+    picture:
+      "https://slimages.macysassets.com/is/image/MCY/products/4/optimized/15247834_fpx.tif?op_sharpen=1&wid=1200&fit=fit,1&$filtersm$&fmt=webp",
+    images: [
+      "https://slimages.macysassets.com/is/image/MCY/products/4/optimized/15247834_fpx.tif?op_sharpen=1&wid=1200&fit=fit,1&$filtersm$&fmt=webp",
+      "https://slimages.macysassets.com/is/image/MCY/products/6/optimized/15247836_fpx.tif?op_sharpen=1&wid=1200&fit=fit,1&$filtersm$&fmt=webp",
+      "https://slimages.macysassets.com/is/image/MCY/products/7/optimized/15247837_fpx.tif?op_sharpen=1&wid=1200&fit=fit,1&$filtersm$&fmt=webp",
+      "https://slimages.macysassets.com/is/image/MCY/products/8/optimized/15247838_fpx.tif?op_sharpen=1&wid=1200&fit=fit,1&$filtersm$&fmt=webp",
+    ],
+    desc: "An office staple, the chic perforated pattern on Karen Scott's Marius ankle booties lends mod appeal to a sleek versatile design.",
+    price: 10.99,
+    rating: 4.9,
+    categories: ["women", "shoes"],
+    size: ["M", "L"],
+  },
+  {
+    _id: 10,
+    title: "Women's Scarf-Tie Packable Panama Sun Hat",
+    picture:
+      "https://slimages.macysassets.com/is/image/MCY/products/2/optimized/20750732_fpx.tif?op_sharpen=1&wid=700&hei=855&fit=fit,1&fmt=webp",
+    images: [
+      "https://slimages.macysassets.com/is/image/MCY/products/2/optimized/20750732_fpx.tif?op_sharpen=1&wid=700&hei=855&fit=fit,1&fmt=webp",
+      "https://slimages.macysassets.com/is/image/MCY/products/6/optimized/20750836_fpx.tif?op_sharpen=1&wid=350&hei=428&fit=fit,1&fmt=webp",
+      "https://slimages.macysassets.com/is/image/MCY/products/5/optimized/20750835_fpx.tif?op_sharpen=1&wid=350&hei=428&fit=fit,1&fmt=webp",
+    ],
+    desc: "Top your look off in style with this packable Panama hat by Nine West that includes sun protection.",
+    price: 28.99,
+    rating: 4.9,
+    categories: ["women", "hats"],
+    size: ["M"],
+  },
+  {
+    _id: 10,
+    title: "Eyelet-Embroidered Tiered Dress",
+    picture:
+      "https://slimages.macysassets.com/is/image/MCY/products/0/optimized/21985370_fpx.tif?op_sharpen=1&wid=1200&fit=fit,1&$filtersm$&fmt=webp",
+    images: [
+      "https://slimages.macysassets.com/is/image/MCY/products/0/optimized/21985370_fpx.tif?op_sharpen=1&wid=1200&fit=fit,1&$filtersm$&fmt=webp",
+      "https://slimages.macysassets.com/is/image/MCY/products/1/optimized/21985371_fpx.tif?op_sharpen=1&wid=1200&fit=fit,1&$filtersm$&fmt=webp",
+      "https://slimages.macysassets.com/is/image/MCY/products/2/optimized/21985372_fpx.tif?op_sharpen=1&wid=1200&fit=fit,1&$filtersm$&fmt=webp",
+    ],
+    desc: "A pretty dress with pockets, this maxi-length piece from kensie will bring comfort and chic style to your day.",
+    price: 135.99,
+    rating: 4.9,
+    categories: ["women", "Dress"],
+    size: ["M", "L", "XL"],
+  },
+  {
+    _id: 10,
+    title: "Women's Mixed Media Printed Dress",
+    picture:
+      "https://slimages.macysassets.com/is/image/MCY/products/5/optimized/22033315_fpx.tif?op_sharpen=1&wid=1200&fit=fit,1&$filtersm$&fmt=webp",
+    images: [
+      "https://slimages.macysassets.com/is/image/MCY/products/5/optimized/22033315_fpx.tif?op_sharpen=1&wid=1200&fit=fit,1&$filtersm$&fmt=webp",
+      "https://slimages.macysassets.com/is/image/MCY/products/6/optimized/22033316_fpx.tif?op_sharpen=1&wid=1200&fit=fit,1&$filtersm$&fmt=webp",
+      "https://slimages.macysassets.com/is/image/MCY/products/7/optimized/22033317_fpx.tif?op_sharpen=1&wid=1200&fit=fit,1&$filtersm$&fmt=webp",
+      "https://slimages.macysassets.com/is/image/MCY/products/8/optimized/22033318_fpx.tif?op_sharpen=1&wid=1200&fit=fit,1&$filtersm$&fmt=webp",
+    ],
+    desc: "Mixed contrasting floral prints make this midi dress from Vince Camuto a knock-out addition to your desk to dinner look.",
+    price: 178.99,
+    rating: 4.9,
+    categories: ["women", "dress"],
+    size: ["S", "M", "L", "XL"],
+  },
+  {
+    _id: 10,
+    title: "Seleeney Wedge Sandals, Created for Macy's",
+    picture:
+      "https://slimages.macysassets.com/is/image/MCY/products/4/optimized/21260604_fpx.tif?op_sharpen=1&wid=1200&fit=fit,1&$filtersm$&fmt=webp",
+    images: [
+      "https://slimages.macysassets.com/is/image/MCY/products/4/optimized/21260604_fpx.tif?op_sharpen=1&wid=60&fit=fit,1&$filtersm$",
+      "https://slimages.macysassets.com/is/image/MCY/products/1/optimized/21260621_fpx.tif?op_sharpen=1&wid=1200&fit=fit,1&$filtersm$&fmt=webp",
+      "https://slimages.macysassets.com/is/image/MCY/products/0/optimized/21260620_fpx.tif?op_sharpen=1&wid=60&fit=fit,1&$filtersm$",
+      "https://slimages.macysassets.com/is/image/MCY/products/9/optimized/21260619_fpx.tif?op_sharpen=1&wid=60&fit=fit,1&$filtersm$",
+    ],
+    desc: "Textured simplicity from Style & Co, the Seleeny wedge sandals pair a striking ankle-strap profile with a braided espadrille platform heel taking you everywhere in effortless style.",
+    price: 63.99,
+    rating: 4.9,
+    categories: ["women", "sandals"],
+    size: ["S", "M", "L", "XL"],
+  },
+  {
+    _id: 10,
+    title: "",
+    picture: "",
+    images: ["", "", ""],
+    desc: "",
+    price: 10,
+    rating: 4.9,
+    categories: ["women", "hats"],
+    size: ["S", "M", "L", "XL"],
+  },
 ];
 
 export default products;

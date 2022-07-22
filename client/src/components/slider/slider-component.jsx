@@ -27,7 +27,7 @@ const Slider = () => {
     x: 0,
     y: 0,
   });
-  const { isMobile } = useContext(GlobalContext);
+  const { screenWidth } = useContext(GlobalContext);
 
   const handleMove = (e) => {
     setHover({ hover: true, x: e.clientX - 40, y: e.clientY - 100 });
@@ -73,7 +73,7 @@ const Slider = () => {
           <img src={img3} alt="model" />
         </motion.div>
       </div>
-      {isMobile ? (
+      {screenWidth < 958 ? (
         <div className="title-small">
           <h2>BAY THIS NOW</h2>
           <h2>BECOME SHINING</h2>

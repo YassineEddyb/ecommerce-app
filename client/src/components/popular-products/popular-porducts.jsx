@@ -33,7 +33,7 @@ function PopularPorducts({ title }) {
   const { products } = useContext(ProductContext);
 
   const handleResize = () => {
-    if (window.innerWidth < 720) {
+    if (window.innerWidth < 768) {
       setIsMobile(true);
     } else {
       setIsMobile(false);

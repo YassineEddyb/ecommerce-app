@@ -13,6 +13,17 @@ class ApiFeatures {
     return this;
   }
 
+  // search() {
+  //   let query = this.query.q;
+  //   if (query) {
+  //     this.obj.find([
+  //       {
+  //         $or: [{ title: { $regex: query } }],
+  //       },
+  //     ]);
+  //   }
+  // }
+
   sort() {
     const sort = this.query.sort || "createdAt";
     const sortQuery = sort.split(",").join(" ");

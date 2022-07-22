@@ -3,12 +3,16 @@ import "./shop.scss";
 
 import { AiOutlineBars } from "react-icons/ai";
 import Select from "react-select";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 
 import Filter from "../../components/filter/filter";
 import Products from "../../components/products/products";
 import SideBar from "../../components/SideBar/SideBar";
 import GlobalContext from "../../context/globalContext";
+import Button from "../../components/button/button";
 import Loader from "../../components/Loader/Loader";
+import { BiCoinStack } from "react-icons/bi";
 
 const options = [
   { value: "price", label: "Price" },
@@ -47,16 +51,47 @@ const colourStyles = {
 
 function Shop() {
   const [sideBar, setSideBar] = useState(false);
-  const { isMobile } = useContext(GlobalContext);
+  const { screenWidth } = useContext(GlobalContext);
+  const [query, setQuery] = useState("");
+  const navigate = useNavigate();
 
   const toggleSideBar = () => {
     setSideBar((prevState) => !prevState);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.keyCode === 13) {
+      navigate(`/shop?q=${query}`);
+    }
+  };
+
+  const handleClick = (e) => {
+    navigate(`/shop?q=${query}`);
+  };
+
+  const handleChange = (e) => {
+    setQuery(e.target.value);
+  };
+
   return (
     <section>
+      <div className="search-cntr">
+        <input
+          tupe="search"
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+          value={query}
+          placeholder="Search"
+          className="search"
+        />
+        <Button
+          clickHandler={handleClick}
+          value="Search"
+          styles={{ width: "auto", height: "40px", padding: "0 1rem" }}
+        />
+      </div>
       <div className="main-page">
-        {!isMobile ? (
+        {screenWidth > 768 ? (
           <Filter className="filters" />
         ) : (
           <SideBar
@@ -69,7 +104,7 @@ function Shop() {
         )}
         <div className="flex">
           <div className="options">
-            {isMobile ? (
+            {screenWidth < 768 ? (
               <AiOutlineBars className="filter-icon" onClick={toggleSideBar} />
             ) : (
               <div />

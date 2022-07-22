@@ -137,6 +137,7 @@
 
 @include breakpoint-down(md) {
   #slider {
+    height: 400px;
     .images {
       display: none;
     }
