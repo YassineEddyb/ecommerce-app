@@ -1,0 +1,41 @@
+@import "../../main.scss";
+
+.checkout-product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 1rem 2rem;
+
+  &:nth-child(2n + 1) {
+    background-color: #f6f6f6;
+  }
+
+  &:nth-child(2n) {
+    background-color: #ebebeb;
+  }
+
+  .product-info {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    .image {
+      margin-right: 1rem;
+      width: 100px;
+      overflow: hidden;
+      img {
+        width: 100%;
+      }
+    }
+    h5 {
+      margin-bottom: 0.5rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .price {
+    font-weight: bold;
+  }
+}

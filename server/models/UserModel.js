@@ -28,8 +28,6 @@ const userSchema = mongoose.Schema({
   ],
 });
 
-productSchema.index({ "$**": "text" });
-
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;

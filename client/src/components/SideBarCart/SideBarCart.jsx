@@ -6,6 +6,8 @@ import userContext from "../../context/userContext";
 import CartProduct from "../CartProduct/CartProduct";
 import Button from "../button/button";
 
+import { Link } from "react-router-dom";
+
 function SideBarCart({ sideBar, toggleSideBar }) {
   const { user } = useContext(userContext);
 
@@ -24,16 +26,18 @@ function SideBarCart({ sideBar, toggleSideBar }) {
           <div className="empty">No Items In Cart</div>
         )}
       </div>
-      <Button
-        className="btn"
-        value="Checkout"
-        styles={{
-          width: "80%",
-          position: "fixed",
-          bottom: "2rem",
-          left: "2.3rem",
-        }}
-      />
+      <Link to="/checkout">
+        <Button
+          className="btn"
+          value="Checkout"
+          styles={{
+            width: "80%",
+            position: "fixed",
+            bottom: "2rem",
+            left: "2.3rem",
+          }}
+        />
+      </Link>
     </SideBar>
   );
 }
