@@ -24,12 +24,12 @@ function CategoryList() {
   const { setProducts } = useContext(ProductContext);
 
   const clickHandler = (e) => {
-    console.log("test");
+    const name = e.target.name;
     setIsLoading(true);
     const fetchProducts = async () => {
       try {
         const result = await axios.get(
-          `/api/products?category=${e.target.name}`
+          `/api/products?category=${name !== "men" && name !== "women" ? name: "" }&gender=${name === "women" || name === "men"? name : ""}`
         );
         setProducts(result.data.products);
         setIsLoading(false);

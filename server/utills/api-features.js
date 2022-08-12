@@ -36,7 +36,17 @@ class ApiFeatures {
     let category = this.query.category;
     if (category) {
       category = category.split(",");
-      this.obj.find({ categories: { $in: category } });
+      this.obj.find({ category: { $in: category } });
+    }
+
+    return this;
+  }
+
+  gender() {
+    let gender = this.query.gender;
+    if (gender) {
+      gender = gender.split(",");
+      this.obj.find({gender: {$in: gender}});
     }
 
     return this;

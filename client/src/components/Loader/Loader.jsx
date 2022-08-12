@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import "./Loader.scss";
 
-import GlobalContext from "../../context/globalContext";
 import ScaleLoader from "react-spinners/ScaleLoader";
+import GridLoader from "react-spinners/GridLoader";
 
 const styles = {
   position: "absolute",
@@ -11,17 +11,14 @@ const styles = {
   transform: "translate(-50%, -50%)",
 };
 
-function Loader({ children }) {
-  const { isLoading } = useContext(GlobalContext);
-
+function Loader({ load }) {
   return (
     <div className="loader">
-      <ScaleLoader
-        color={"#51a767"}
-        // loading={loading}
-        cssOverride={styles}
-        size={150}
-      />
+          {load ? (
+        <GridLoader color={"#51a767"} cssOverride={styles} size={15} />
+      ) : (
+        <ScaleLoader color={"#51a767"} cssOverride={styles} size={150} />
+      )}
     </div>
   );
 }

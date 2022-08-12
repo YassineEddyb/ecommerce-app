@@ -11,7 +11,7 @@ exports.getAllProducts = async (req, res, next) => {
     data = Product.find({ $text: { $search: req.query.q } });
   } else data = Product.find();
 
-  const filter = new ApiFeatures(data, req.query).category().price().size();
+  const filter = new ApiFeatures(data, req.query).gender().category().price().size();
 
   const products = await filter.obj;
 
@@ -72,3 +72,9 @@ exports.deleteAll = catchAsync(async (req, res, next) => {
 
   res.status(200).json({ status: "success" });
 });
+
+exports.propularProducts = catchAsync(async (req, res, next) => {
+  const products = await Product.find().sort("price").limit(10);
+
+  res.status(200).json({status: "success", products});
+})

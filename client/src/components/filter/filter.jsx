@@ -24,8 +24,6 @@ function Filter(props) {
   const { setProducts } = useContext(ProductContext);
   const { setIsLoading } = useContext(GlobalContext);
   const [filters, setFilters] = useState({
-    men: false,
-    women: false,
     hats: false,
     "t-shirts": false,
     shoes: false,
@@ -38,6 +36,10 @@ function Filter(props) {
     l: false,
     xl: false,
   });
+  const [gender, setGender] = useState({
+    men: false,
+    women: false,
+  }) 
   const search = useLocation().search;
   const query = new URLSearchParams(search).get("q");
 
@@ -50,17 +52,17 @@ function Filter(props) {
             value[1]
           }&category=${getObjectasString(filters)}&size=${getObjectasString(
             sizes
-          )}`
+          )}&gender=${gender.men? "men" : ""},${gender.women? "women": ""}`
         );
         setProducts(res.data.products);
         setIsLoading(false);
       } catch (err) {
-        console.log(err);
+        setProducts({});
         setIsLoading(false);
       }
     };
     fetchProducts();
-  }, [value, filters, sizes, query]);
+  }, [value, filters, sizes, query, gender]);
 
   const handleCategory = (e) => {
     const name = e.target.id;
@@ -72,6 +74,11 @@ function Filter(props) {
     setSizes({ ...sizes, [name]: !sizes[name] });
   };
 
+  const handleGender = (e) => {
+    const name = e.target.id;
+    setGender({ ...gender, [name]: !gender[name] });
+  }
+
   const rangeSelector = (event, newValue) => {
     setValue(newValue);
   };
@@ -81,9 +88,9 @@ function Filter(props) {
       <h3 className="header-text">FILTERS</h3>
       <div className="gender">
         <h4 className="title">Gender</h4>
-        <Checkbox handleChange={handleCategory} className="option" name="men" />
+        <Checkbox handleChange={handleGender} className="option" name="men" />
         <Checkbox
-          handleChange={handleCategory}
+          handleChange={handleGender}
           className="option"
           name="women"
         />
@@ -93,7 +100,7 @@ function Filter(props) {
         <Checkbox
           handleChange={handleCategory}
           className="option"
-          name="t-shirts"
+          name="T-shirts"
         />
         <Checkbox
           handleChange={handleCategory}

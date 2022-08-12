@@ -5,7 +5,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 import ProductCard from "../product-card/product-card";
-// import products from "../../utils/products-data";
+import axios from "../../utils/axiosConfig"
 
 import ProductContext from "../../context/productsContext";
 
@@ -30,7 +30,7 @@ const responsive = {
 
 function PopularPorducts({ title }) {
   const [isMobile, setIsMobile] = useState(false);
-  const { products } = useContext(ProductContext);
+  const [products, setProducts] = useState([]);
 
   const handleResize = () => {
     if (window.innerWidth < 768) {
@@ -42,7 +42,16 @@ function PopularPorducts({ title }) {
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
-  });
+    const fetchProducts = async () => {
+      try {
+        const res = await axios.get("api/products/popularProducts");
+        setProducts(res.data.products);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchProducts()
+  }, [isMobile]);
 
   return (
     <div className="popular-products">
