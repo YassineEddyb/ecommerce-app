@@ -13,6 +13,7 @@ import GlobalContext from "../../context/globalContext";
 import Button from "../../components/button/button";
 import Loader from "../../components/Loader/Loader";
 import { BiCoinStack } from "react-icons/bi";
+import Paginate from "../../components/paginate/paginate";
 
 const options = [
   { value: "price", label: "Price" },
@@ -123,6 +124,7 @@ function Shop() {
             </div>
           </div>
           <Products className="products" />
+          <Paginate />
         </div>
       </div>
     </section>

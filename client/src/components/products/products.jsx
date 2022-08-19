@@ -22,6 +22,7 @@ const Products = () => {
         <h3 className="empty">No Product To Show</h3>
       )}
     </div>
+    
   );
 };
 

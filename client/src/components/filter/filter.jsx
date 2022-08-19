@@ -20,7 +20,7 @@ const getObjectasString = (filter) => {
 };
 
 function Filter(props) {
-  const [value, setValue] = React.useState([0, 100]);
+  const [value, setValue] = React.useState([0, 500]);
   const { setProducts } = useContext(ProductContext);
   const { setIsLoading } = useContext(GlobalContext);
   const [filters, setFilters] = useState({
@@ -42,19 +42,21 @@ function Filter(props) {
   }) 
   const search = useLocation().search;
   const query = new URLSearchParams(search).get("q");
+  const page = new URLSearchParams(search).get("page");
 
   useEffect(() => {
     setIsLoading(true);
     const fetchProducts = async () => {
       try {
         const res = await axios.get(
-          `/api/products?q=${query ? query : ""}&price=${value[0]},${
+          `/api/products?page=${page}&q=${query ? query : ""}&price=${value[0]},${
             value[1]
           }&category=${getObjectasString(filters)}&size=${getObjectasString(
             sizes
           )}&gender=${gender.men? "men" : ""},${gender.women? "women": ""}`
         );
         setProducts(res.data.products);
+        console.log(res.data.products);
         setIsLoading(false);
       } catch (err) {
         setProducts({});
@@ -62,7 +64,7 @@ function Filter(props) {
       }
     };
     fetchProducts();
-  }, [value, filters, sizes, query, gender]);
+  }, [value, filters, sizes, query, gender, page]);
 
   const handleCategory = (e) => {
     const name = e.target.id;
@@ -138,6 +140,8 @@ function Filter(props) {
       <div className="price-range">
         <h4 className="title">Price</h4>
         <Slider
+          min={10}
+          max={500}
           value={value}
           onChange={rangeSelector}
           valueLabelDisplay="auto"
