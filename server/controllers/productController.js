@@ -5,19 +5,28 @@ const ApiError = require("../utills/api-error");
 const catchAsync = require("../utills/catchAsync");
 const ApiFeatures = require("../utills/api-features");
 
+const paginate = (products, p, l) => {
+  const page = p || 1;
+  const limit = l || 10;
+
+  return products.slice((page - 1) * limit, (page - 1) * limit + limit);
+}
+
 exports.getAllProducts = async (req, res, next) => {
   let data;
   if (req.query.q) {
     data = Product.find({ $text: { $search: req.query.q } });
   } else data = Product.find();
 
-  const filter = new ApiFeatures(data, req.query).paginate().gender().category().price().size();
+  const filter = new ApiFeatures(data, req.query).gender().category().price().size();
 
-  const products = await filter.obj;
+  let products = await filter.obj;
+  const count = products.length;
+  products = paginate(products, req.query.page, req.query.limit);
 
   if (!products[0]) return next(new ApiError("there is no porducts", 400));
 
-  res.status(200).json({ status: "success", products });
+  res.status(200).json({ status: "success", data: {products, count} });
 };
 
 exports.getProduct = catchAsync(async (req, res, next) => {
@@ -80,7 +89,16 @@ exports.propularProducts = catchAsync(async (req, res, next) => {
 })
 
 exports.productCount = catchAsync(async (req, res, next) => {
-  const count = await Product.count();
+  let data;
+  if (req.query.q) {
+    data = Product.find({ $text: { $search: req.query.q } });
+  } else data = Product.find();
+
+  const filter = new ApiFeatures(data, req.query).gender().category().price().size();
+
+  const products = await filter.obj;
+
+  const count = products.length
 
   res.status(200).json({status: "success", count});
 })

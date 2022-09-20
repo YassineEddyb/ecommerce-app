@@ -7,7 +7,6 @@ const userRouter = require("./routes/userRoutes");
 const authRouter = require("./routes/authRoutes");
 const paymentRouter = require("./routes/paymentRoutes");
 const errorHandler = require("./controllers/errorController");
-
 const app = express();
 
 app.use(express.json({ limit: "10kb" }));

@@ -5,7 +5,8 @@
   align-items: center;
   margin-left: 2rem;
   .box {
-    // accent-color: $main-color;
+    color: $main-color;
+    border-color: $text-color;
     cursor: pointer;
     height: 30px;
   }

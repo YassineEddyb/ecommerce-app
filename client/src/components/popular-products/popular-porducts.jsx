@@ -1,32 +1,20 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./popular-products.scss";
 
-import Carousel from "react-multi-carousel";
+import Carousel from 'react-elastic-carousel';
 import "react-multi-carousel/lib/styles.css";
 
 import ProductCard from "../product-card/product-card";
 import axios from "../../utils/axiosConfig"
 
-import ProductContext from "../../context/productsContext";
-
-const responsive = {
-  desktop: {
-    breakpoint: { max: 3000, min: 1100 },
-    items: 4,
-  },
-  pc: {
-    breakpoint: { max: 1100, min: 930 },
-    items: 3,
-  },
-  tablet: {
-    breakpoint: { max: 930, min: 464 },
-    items: 2,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
+const responsive = [
+  { width: 1, itemsToShow: 1 },
+  { width: 550, itemsToShow: 2, itemsToScroll: 2, pagination: false },
+  { width: 850, itemsToShow: 4 },
+  { width: 1150, itemsToShow: 5, itemsToScroll: 2 },
+  { width: 1450, itemsToShow: 6 },
+  { width: 1750, itemsToShow: 8 }
+];
 
 function PopularPorducts({ title }) {
   const [isMobile, setIsMobile] = useState(false);
@@ -58,17 +46,9 @@ function PopularPorducts({ title }) {
       <h2>{title}</h2>
       <Carousel
         className="carousel"
-        swipeable={true}
-        draggable={false}
-        responsive={responsive}
-        ssr={true}
-        infinite={true}
-        autoPlay={true}
-        autoPlaySpeed={2000}
-        containerClass="carousel-container"
-        dotListClass="custom-dot-list-style"
-        itemClass="carousel-item-padding-40-px"
-        centerMode={!isMobile}
+        breakPoints={responsive}
+        pagination={false}
+        enableSwipe={false}
       >
         {products.map((el) => {
           return <ProductCard className="item" key={el._id} item={el} />;

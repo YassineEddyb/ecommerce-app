@@ -7,13 +7,13 @@
   padding-top: 1rem;
   display: grid;
   width: 100%;
-  // height: 100%;
+  height: auto;
+  min-height: 400px;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   grid-gap: 1.5rem;
   grid-auto-flow: row;
 
   .empty {
-    margin-top: 100px;
     position: absolute;
     color: $text-color;
     text-align: center;

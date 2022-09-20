@@ -26,7 +26,6 @@ const Login = () => {
   };
 
   const handleClick = (e) => {
-    console.log(visible);
     setVisible((prevState) => !prevState);
   };
 
@@ -43,7 +42,7 @@ const Login = () => {
       window.location.reload();
       navigate("/");
     } catch (err) {
-      // console.log(err.response.data.message);
+      console.log(err);
       setError(true);
     }
   };

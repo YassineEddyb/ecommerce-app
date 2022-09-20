@@ -8,6 +8,7 @@ import GlobalContext from "../../context/globalContext";
 import ProductContext from "../../context/productsContext";
 
 import { useLocation } from "react-router-dom";
+import Button from "../button/button";
 
 const getObjectasString = (filter) => {
   let str = "";
@@ -21,24 +22,25 @@ const getObjectasString = (filter) => {
 
 function Filter(props) {
   const [value, setValue] = React.useState([0, 500]);
-  const { setProducts } = useContext(ProductContext);
+  const { setProducts, setCount } = useContext(ProductContext);
   const { setIsLoading } = useContext(GlobalContext);
   const [filters, setFilters] = useState({
-    hats: false,
-    "t-shirts": false,
-    shoes: false,
-    hoodies: false,
-    pants: false,
+    hats: true,
+    "T-shirts": true,
+    shoes: true,
+    hoodies: true,
+    pants: true,
+    dress: true
   });
   const [sizes, setSizes] = useState({
-    s: false,
-    m: false,
-    l: false,
-    xl: false,
+    S: true,
+    M: true,
+    L: true,
+    XL: true,
   });
   const [gender, setGender] = useState({
-    men: false,
-    women: false,
+    men: true,
+    women: true,
   }) 
   const search = useLocation().search;
   const query = new URLSearchParams(search).get("q");
@@ -49,14 +51,14 @@ function Filter(props) {
     const fetchProducts = async () => {
       try {
         const res = await axios.get(
-          `/api/products?page=${page}&q=${query ? query : ""}&price=${value[0]},${
+          `/api/products?page=${page? page: 1}&q=${query ? query : ""}&price=${value[0]},${
             value[1]
           }&category=${getObjectasString(filters)}&size=${getObjectasString(
             sizes
           )}&gender=${gender.men? "men" : ""},${gender.women? "women": ""}`
         );
-        setProducts(res.data.products);
-        console.log(res.data.products);
+        setProducts(res.data.data.products);
+        setCount(res.data.data.count);
         setIsLoading(false);
       } catch (err) {
         setProducts({});
@@ -123,6 +125,11 @@ function Filter(props) {
           handleChange={handleCategory}
           className="option"
           name="shoes"
+        />
+        <Checkbox
+          handleChange={handleCategory}
+          className="option"
+          name="dress"
         />
       </div>
       <div className="size">

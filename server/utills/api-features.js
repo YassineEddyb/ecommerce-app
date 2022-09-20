@@ -56,7 +56,8 @@ class ApiFeatures {
     let size = this.query.size;
     if (size) {
       size = size.split(",");
-      this.obj.find({ size: { $in: size } });
+      console.log(size);
+      this.obj.find({ size: {$in: size} });
     }
 
     return this;

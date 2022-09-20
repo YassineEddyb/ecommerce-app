@@ -17,12 +17,21 @@
   .side-bar {
     background-color: $back-light;
     position: absolute;
+    display: flex;
+    flex-direction: column;
     height: 100%;
     top: 0;
     max-width: 400px;
-    z-index: 999;
-    position: fixed;
-    overflow: auto;
     transition: 0.5s ease-in-out;
+    position: fixed;
+    z-index: 999;
+    .list {
+      overflow: auto;
+    }
+    .btn {
+      padding: 10px;
+      margin:  auto;
+      margin-bottom: 3rem;
+    }
   }
 }

@@ -76,21 +76,6 @@ function Shop() {
 
   return (
     <section>
-      <div className="search-cntr">
-        <input
-          tupe="search"
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-          value={query}
-          placeholder="Search"
-          className="search"
-        />
-        <Button
-          clickHandler={handleClick}
-          value="Search"
-          styles={{ width: "auto", height: "40px", padding: "0 1rem" }}
-        />
-      </div>
       <div className="main-page">
         {screenWidth > 768 ? (
           <Filter className="filters" />
@@ -110,16 +95,19 @@ function Shop() {
             ) : (
               <div />
             )}
-            <div className="sort">
-              {/* <label htmlFor="sort-by">Sort By</label> */}
-              <Select
-                styles={colourStyles}
-                placeholder="SORT BY"
-                isSearchable={false}
-                isMulti={false}
-                // defaultValue={selectedOption}
-                // onChange={setSelectedOption}
-                options={options}
+            <div className="search-cntr">
+              <input
+                tupe="search"
+                onChange={handleChange}
+                onKeyDown={handleKeyDown}
+                value={query}
+                placeholder="Search ..."
+                className="search"
+              />
+              <Button
+                clickHandler={handleClick}
+                value="Search"
+                styles={{ width: "auto", height: "40px", padding: "0 1rem" }}
               />
             </div>
           </div>
