@@ -23,7 +23,8 @@ const tours = [
     desc: "If you could create the perfect blazer to make your confidence soar, it would probably look a lot like this slim-fit navy and white striped blazer from Tallia.",
     price: 135.99,
     rating: 4.9,
-    categories: ["blazers"],
+    categories: ["men", "blazers"],
+    size: ["S", "L", "M", "XL"],
   },
   {
     title: "INC Men's Ezra Sneakers, Created for Macy's",
@@ -38,7 +39,8 @@ const tours = [
     desc: "INC International Concepts® finishes off your relaxed look with the smooth lines and comfortable fit of the Ezra low-top sneakers.",
     price: 30.99,
     rating: 4.9,
-    categories: ["shoes"],
+    categories: ["men", "women", "shoes"],
+    size: ["S", "M", "XL"],
   },
   {
     title: "Men's Fleece Jogger Pants",
@@ -53,7 +55,8 @@ const tours = [
     desc: "Objects in motion stay in motion. Even after practice is wrapped up, you want the same freedom to move through life with easy comfort. Slip into these adidas pants and go about your routine without a single roadblock.",
     price: 32.99,
     rating: 4.9,
-    categories: ["pants"],
+    categories: ["men", "pants"],
+    size: ["S", "L", "M"],
   },
   {
     title: "Men's Logo Hoodie",
@@ -68,7 +71,8 @@ const tours = [
     desc: "Meet and embrace this versatile hoodie with an adidas Badge of Sport. It features an adjustable drawstring hood and the soft, breathable comfort of pure cotton.",
     price: 31.99,
     rating: 4.9,
-    categories: ["hoodies"],
+    categories: ["men", "women", "hoodies"],
+    size: ["S", "L", "M", "XL"],
   },
   {
     title: "Men's Logo Long-Sleeve T-Shirt",
@@ -83,7 +87,8 @@ const tours = [
     desc: "Ringspun cotton brings an ultra-soft feel to this adidas T-shirt. A bold logo adds a classic touch, while long sleeves give you added warmth.",
     price: 23.99,
     rating: 4.9,
-    categories: ["shirts"],
+    categories: ["men", "T-shirts"],
+    size: ["S", "XL"],
   },
   {
     title: "Men's Fleece Logo Hoodie",
@@ -98,7 +103,7 @@ const tours = [
     desc: "Update your go-to with this Puma hoodie, a classic fleece freshened with bold new color.",
     price: 23.99,
     rating: 4.9,
-    categories: ["hoodies"],
+    categories: ["men", "women", "hoodies"],
   },
   {
     title: "Men's Tech 2.0 V-Neck T-Shirt",
@@ -112,7 +117,8 @@ const tours = [
     desc: "An active essential with casual style, this tech T-shirt from Under Armour features a V-neck and slim silhouette. Performance technology enhances ultra-soft fabric for lasting comfort.",
     price: 19.99,
     rating: 4.9,
-    categories: ["T-shirts"],
+    categories: ["men", "T-shirts"],
+    size: ["M", "XL"],
   },
   {
     title: "Men's Grayson Lace-Up Sneakers, Created for Macy's",
@@ -126,7 +132,8 @@ const tours = [
     desc: "Supple sheen and neat lacing adds a dressy hint to dressed-down looks in the laced Grayson sneakers by Alfani.",
     price: 26.99,
     rating: 4.9,
-    categories: ["shoes"],
+    categories: ["men", "women", "shoes"],
+    size: ["S", "L", "M", "XL"],
   },
   {
     title: "Men's Game & Go Tapered-Fit Moisture-Wicking Fleece Sweatpants",
@@ -140,7 +147,8 @@ const tours = [
     desc: "Stay comfortable and stylish before, during and after your workouts with these Game & Go tapered sweatpants from adidas, featuring soft fleece and adjustable zipper leg openings.",
     price: 22.99,
     rating: 4.9,
-    categories: ["pants"],
+    categories: ["men", "pants"],
+    size: ["L", "M", "XL"],
   },
   {
     title: "Men's Script Logo Powerblend Hoodie",
@@ -154,7 +162,8 @@ const tours = [
     desc: "A classic look in soft fleece, this Champion hoodie resists pilling and shrinking to stay looking good longer.",
     price: 31.99,
     rating: 4.9,
-    categories: ["hoodies"],
+    categories: ["men", "women", "hoodies"],
+    size: ["S", "L", "XL"],
   },
 ];
 

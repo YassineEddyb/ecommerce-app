@@ -1,11 +1,13 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 
 import axios from "../utils/axiosConfig";
+import GlobalContext from "./globalContext";
 
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  const { setIsAuth, setInitLoading } = useContext(GlobalContext);
 
   useEffect(() => {
     const updateUser = async () => {
@@ -23,6 +25,7 @@ export const UserProvider = ({ children }) => {
   }, [user]);
 
   useEffect(() => {
+    setInitLoading(true);
     const fetchUser = async () => {
       try {
         const res = await axios.get("api/users/me", {
@@ -31,8 +34,11 @@ export const UserProvider = ({ children }) => {
           },
         });
         setUser(res.data.user);
+        setIsAuth(true);
+        setInitLoading(false);
       } catch (err) {
         console.log(err);
+        setInitLoading(false);
       }
     };
     fetchUser();

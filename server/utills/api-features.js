@@ -16,16 +16,26 @@ class ApiFeatures {
   sort() {
     const sort = this.query.sort || "createdAt";
     const sortQuery = sort.split(",").join(" ");
-    this.obj.sort(sortQuery);
+    if (this.obj.sort) this.obj.sort(sortQuery);
 
     return this;
   }
 
   category() {
     let category = this.query.category;
-    if (category) {
+    if (category && this.obj.find) {
       category = category.split(",");
-      this.obj.find({ categories: { $in: category }});
+      this.obj.find({ categories: { $in: category } });
+    }
+
+    return this;
+  }
+
+  size() {
+    let size = this.query.size;
+    if (size && this.obj.find) {
+      size = size.split(",");
+      this.obj.find({ size: { $in: size } });
     }
 
     return this;
@@ -33,7 +43,7 @@ class ApiFeatures {
 
   price() {
     let price = this.query.price;
-    if (price) {
+    if (price && this.obj.find) {
       price = price.split(",");
       this.obj.find({
         price: { $gt: parseInt(price[0]), $lt: parseInt(price[1]) },

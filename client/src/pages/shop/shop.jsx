@@ -8,6 +8,7 @@ import Filter from "../../components/filter/filter";
 import Products from "../../components/products/products";
 import SideBar from "../../components/SideBar/SideBar";
 import GlobalContext from "../../context/globalContext";
+import Loader from "../../components/Loader/Loader";
 
 const options = [
   { value: "price", label: "Price" },

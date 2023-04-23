@@ -42,8 +42,8 @@ function ProductCard({ item, shadow }) {
         </Link>
       </div>
       <span className="title">
-        {item.title.substring(0, 50)}
-        {item.title.length > 50 ? ".." : null}
+        {item.title.substring(0, 35)}
+        {item.title.length > 35 ? ".." : null}
       </span>
       <div className="info">
         <span className="price">${item.price}</span>

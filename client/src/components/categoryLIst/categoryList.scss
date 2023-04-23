@@ -1,0 +1,20 @@
+@import "../../main.scss";
+
+.categories-list {
+  cursor: pointer;
+  background-color: $back-light;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  .link {
+    color: $bold-text-color;
+    text-decoration: none;
+    padding: 10px 10px;
+    text-transform: capitalize;
+    &:hover {
+      color: $main-color;
+    }
+  }
+}

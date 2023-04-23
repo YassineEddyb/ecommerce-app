@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import "./App.css";
@@ -13,27 +14,39 @@ import Account from "./pages/account/account";
 
 import { ProductProvider } from "./context/productsContext";
 import { UserProvider } from "./context/userContext";
-import { GlobalProvider } from "./context/globalContext";
+import ProtectedRoutes from "./utils/protectedRoutes";
+import HomeRedirect from "./utils/homeRedirect";
+import Loader from "./components/Loader/Loader";
+
+import GlobalContext from "./context/globalContext";
 
 function App() {
+  const { initLoading } = useContext(GlobalContext);
+
   return (
     <div className="App">
       <ProductProvider>
         <UserProvider>
-          <GlobalProvider>
+          {initLoading ? (
+            <Loader />
+          ) : (
             <Router>
               <Header />
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route exact path="/login" element={<Login />} />
-                <Route exact path="/signup" element={<SignUp />} />
+                <Route element={<HomeRedirect />}>
+                  <Route exact path="/login" element={<Login />} />
+                  <Route exact path="/signup" element={<SignUp />} />
+                </Route>
                 <Route exact path="/shop" element={<Shop />} />
                 <Route path="/product/:id" element={<ProductPage />} />
-                <Route path="/account" element={<Account />} />
+                <Route element={<ProtectedRoutes />}>
+                  <Route exact path="/account" element={<Account />} />
+                </Route>
               </Routes>
               <Footer />
             </Router>
-          </GlobalProvider>
+          )}
         </UserProvider>
       </ProductProvider>
     </div>

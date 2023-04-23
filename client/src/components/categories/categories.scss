@@ -1,9 +1,18 @@
 @import "../../main.scss";
+@import "../../assets/styles/breakpoints.scss";
 
 .categories {
-  width: 90%;
   padding-bottom: 5rem;
   margin: auto;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-items: center;
+  grid-gap: 1rem;
+}
+
+@include breakpoint-down(md) {
+  .categories {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.5rem;
+  }
 }

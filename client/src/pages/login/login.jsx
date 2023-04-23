@@ -5,9 +5,18 @@ import axios from "../../utils/axiosConfig";
 import Button from "../../components/button/button";
 import Input from "../../components/Input/input";
 
+import { useNavigate } from "react-router";
+import userContext from "../../context/userContext";
+import GlobalContext from "../../context/globalContext";
+import ErrorMsg from "../../components/ErrorMsg/ErrorMsg";
+
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
+  // const { setUser } = useContext(userContext);
+  const { setIsAuth } = useContext(GlobalContext);
+  const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
+  const [isError, setError] = useState(false);
 
   const changeHandler = (e) => {
     e.preventDefault();
@@ -17,11 +26,8 @@ const Login = () => {
   };
 
   const handleClick = (e) => {
-    //   const el = document.querySelector(".pass");
-    //   // if (!visible) el.type = "text";
-    //   // else el.type = "password";
-    //   console.log(e);
-    //   // setVisible(!visible);
+    console.log(visible);
+    setVisible((prevState) => !prevState);
   };
 
   const SubmitHandler = async (e) => {
@@ -32,14 +38,21 @@ const Login = () => {
         password: data.password,
       });
       localStorage.setItem("jwt", res.data.token);
-      console.log(res.data);
+      // setUser({});
+      setIsAuth(true);
+      window.location.reload();
+      navigate("/");
     } catch (err) {
-      console.log(err.response.data.message);
+      // console.log(err.response.data.message);
+      setError(true);
     }
   };
 
   return (
     <div className="login-page">
+      {isError ? (
+        <ErrorMsg msg="Error: email or password is not correct!" />
+      ) : null}
       <h1>Log in</h1>
       <form className="form">
         <Input name="email" value={data.email} changeHandler={changeHandler} />
@@ -48,6 +61,7 @@ const Login = () => {
           name="password"
           value={data.password}
           changeHandler={changeHandler}
+          visible={visible}
         />
         <input
           id="check"
@@ -55,9 +69,7 @@ const Login = () => {
           type="checkbox"
           onClick={handleClick}
         />
-        <label htmlFor="check" onClick={handleClick}>
-          show password
-        </label>
+        <label htmlFor="check">show password</label>
         <Button value="Log in" clickHandler={SubmitHandler} />
       </form>
     </div>

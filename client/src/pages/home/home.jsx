@@ -9,8 +9,10 @@ const Home = () => {
   return (
     <div className="home">
       <Slider />
-      <PopularPorducts />
-      <Categories />
+      <div className="home-page">
+        <PopularPorducts title="Popular Products" />
+        <Categories className="categories-section" />
+      </div>
     </div>
   );
 };

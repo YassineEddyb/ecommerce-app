@@ -23,8 +23,11 @@ const productSchema = mongoose.Schema({
     max: 5,
   },
   categories: [String],
+  size: [String],
   createdAt: { type: Date, default: Date.now() },
 });
+
+productSchema.index({"$**": 'text'});
 
 const Product = mongoose.model("Product", productSchema);
 

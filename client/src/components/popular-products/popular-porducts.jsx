@@ -1,32 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./popular-products.scss";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 import ProductCard from "../product-card/product-card";
-import products from "../../utils/products-data";
+// import products from "../../utils/products-data";
+
+import ProductContext from "../../context/productsContext";
 
 const responsive = {
   desktop: {
-    breakpoint: { max: 3000, min: 1024 },
+    breakpoint: { max: 3000, min: 1100 },
     items: 4,
-    slidesToSlide: 1, // optional, default to 1.
+  },
+  pc: {
+    breakpoint: { max: 1100, min: 930 },
+    items: 3,
   },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
+    breakpoint: { max: 930, min: 464 },
     items: 2,
-    slidesToSlide: 1, // optional, default to 1.
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
     items: 1,
-    slidesToSlide: 1, // optional, default to 1.
   },
 };
 
-function PopularPorducts() {
+function PopularPorducts({ title }) {
   const [isMobile, setIsMobile] = useState(false);
+  const { products } = useContext(ProductContext);
 
   const handleResize = () => {
     if (window.innerWidth < 720) {
@@ -42,7 +46,7 @@ function PopularPorducts() {
 
   return (
     <div className="popular-products">
-      <h1>Popular Products</h1>
+      <h2>{title}</h2>
       <Carousel
         className="carousel"
         swipeable={true}
@@ -58,7 +62,7 @@ function PopularPorducts() {
         centerMode={!isMobile}
       >
         {products.map((el) => {
-          return <ProductCard key={el._id} item={el} />;
+          return <ProductCard className="item" key={el._id} item={el} />;
         })}
       </Carousel>
     </div>

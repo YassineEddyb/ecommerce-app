@@ -31,7 +31,6 @@ const Slider = () => {
 
   const handleMove = (e) => {
     setHover({ hover: true, x: e.clientX - 40, y: e.clientY - 100 });
-    console.log(hover.hover);
   };
 
   return (
@@ -49,30 +48,30 @@ const Slider = () => {
         >
           <img src={img2} alt="model" />
         </motion.div>
-        <motion.dev
+        <motion.div
           className="img"
           variants={item}
           initial="hidden"
           animate="visible"
         >
           <img src={img1} alt="model" />
-        </motion.dev>
-        <motion.dev
+        </motion.div>
+        <motion.div
           className="img"
           variants={item}
           initial="hidden"
           animate="visible"
         >
           <img src={img4} alt="model" />
-        </motion.dev>
-        <motion.dev
+        </motion.div>
+        <motion.div
           className="img"
           variants={item}
           initial="hidden"
           animate="visible"
         >
           <img src={img3} alt="model" />
-        </motion.dev>
+        </motion.div>
       </div>
       {isMobile ? (
         <div className="title-small">
@@ -98,16 +97,6 @@ const Slider = () => {
           </div>
         </div>
       )}
-
-      {/* <motion.div
-        style={hover.hover ? { display: "block" } : null}
-        animate={{
-          x: hover.x,
-          y: hover.y,
-          transition: { duration: 1, ease: "backOut" },
-        }}
-        className="circle"
-      ></motion.div> */}
     </motion.section>
   );
 };

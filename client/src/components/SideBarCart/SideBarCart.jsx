@@ -27,7 +27,7 @@ function SideBarCart({ sideBar, toggleSideBar }) {
       <Button
         className="btn"
         value="Checkout"
-        width={{
+        styles={{
           width: "80%",
           position: "fixed",
           bottom: "2rem",

@@ -5,8 +5,16 @@ const ApiError = require("../utills/api-error");
 const catchAsync = require("../utills/catchAsync");
 const ApiFeatures = require("../utills/api-features");
 
+const getData = (req) => {
+};
+
 exports.getAllProducts = async (req, res, next) => {
-  const filter = new ApiFeatures(Product.find(), req.query).category().price();
+  let data;
+  if (req.query.q) {
+    data = Product.find({"$text": { "$search": req.query.q } });
+  } else data = Product.find();
+
+  const filter = new ApiFeatures(data, req.query).category().price().size();
 
   const products = await filter.obj;
 
