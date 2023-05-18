@@ -3,17 +3,13 @@ import { createContext, useState, useEffect } from "react";
 const GlobalContext = createContext();
 
 export const GlobalProvider = ({ children }) => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isAuth, setIsAuth] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [initLoading, setInitLoading] = useState(true);
 
   const handleResize = () => {
-    if (window.innerWidth < 720) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
+    setScreenWidth(window.innerWidth);
   };
 
   useEffect(() => {
@@ -23,7 +19,7 @@ export const GlobalProvider = ({ children }) => {
   return (
     <GlobalContext.Provider
       value={{
-        isMobile,
+        screenWidth,
         isAuth,
         setIsAuth,
         isLoading,

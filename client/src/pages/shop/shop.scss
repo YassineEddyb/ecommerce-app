@@ -1,10 +1,30 @@
 @import "../../main.scss";
 @import "../../assets/styles/breakpoints.scss";
 
-.main-page {
-  margin: 5rem 0;
+.search-cntr {
+  // margin-top: 3rem;
   display: flex;
   width: 100%;
+  justify-content: end;
+  gap: 0.5rem;
+
+  .search {
+    width: 30%;
+    height: 40px;
+    min-width: 200px;
+    padding: 0 10px;
+    border: 1px solid $text-color;
+    border-radius: 5px;
+    background-color: $back-light;
+    margin-left: 1rem;
+  }
+}
+
+.main-page {
+  margin: 3rem 0;
+  display: flex;
+  width: 100%;
+  height: auto;
   position: relative;
 
   .flex {
@@ -20,8 +40,6 @@
       .filter-icon {
         cursor: pointer;
         font-size: 1.5rem;
-      }
-      .sort {
       }
     }
   }

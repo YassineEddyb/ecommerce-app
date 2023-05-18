@@ -21,17 +21,18 @@ const categories = [
 
 function CategoryList() {
   const { setIsLoading } = useContext(GlobalContext);
-  const { setProducts } = useContext(ProductContext);
+  const { setProducts, setCount } = useContext(ProductContext);
 
   const clickHandler = (e) => {
-    console.log("test");
+    const name = e.target.name;
     setIsLoading(true);
     const fetchProducts = async () => {
       try {
         const result = await axios.get(
-          `/api/products?category=${e.target.name}`
+          `/api/products?category=${name !== "men" && name !== "women" ? name: "" }&gender=${name === "women" || name === "men"? name : ""}`
         );
-        setProducts(result.data.products);
+        setProducts(result.data.data.products);
+        setCount(result.data.data.count);
         setIsLoading(false);
       } catch (err) {
         console.log(err);
@@ -43,10 +44,11 @@ function CategoryList() {
 
   return (
     <ul className="categories-list">
-      {categories.map((category) => (
+      {categories.map((category, idx) => (
         <Link
+          key={idx}
           name={category}
-          to="/shop/"
+          to={`/shop/${category}`}
           className="link"
           onClick={clickHandler}
         >

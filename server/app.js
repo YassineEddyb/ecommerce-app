@@ -5,8 +5,8 @@ require("dotenv").config();
 const productRouter = require("./routes/productRoutes");
 const userRouter = require("./routes/userRoutes");
 const authRouter = require("./routes/authRoutes");
+const paymentRouter = require("./routes/paymentRoutes");
 const errorHandler = require("./controllers/errorController");
-
 const app = express();
 
 app.use(express.json({ limit: "10kb" }));
@@ -34,6 +34,7 @@ app.use(function (req, res, next) {
 app.use("/api/auth", authRouter);
 app.use("/api/products", productRouter);
 app.use("/api/users", userRouter);
+app.use("/api/payment", paymentRouter);
 
 // handling errors
 app.use(errorHandler);

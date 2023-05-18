@@ -5,6 +5,8 @@
 
 #slider {
   width: 100%;
+  max-width: 1200px;
+  margin: auto;
   height: 600px;
   background-color: $back-light;
   position: relative;
@@ -73,7 +75,7 @@
 
     p {
       margin-bottom: 2rem;
-      font-size: clamp(15px, 2vw, 100px);
+      font-size: clamp(15px, 2vw, 50px);
     }
 
     .link {
@@ -81,7 +83,7 @@
     }
 
     h2 {
-      font-size: clamp(35px, 8vw, 100px);
+      font-size: clamp(35px, 8vw, 50px);
       white-space: nowrap;
     }
   }
@@ -100,7 +102,7 @@
     }
 
     h1 {
-      font-size: 8vw;
+      font-size: clamp(35px, 8vw, 100px);
       white-space: nowrap;
     }
 
@@ -119,7 +121,7 @@
 
       p {
         width: 300px;
-        font-size: 1.2vw;
+        font-size: clamp(14px, 1.2vw, 16px);
       }
     }
   }
@@ -137,6 +139,7 @@
 
 @include breakpoint-down(md) {
   #slider {
+    height: 400px;
     .images {
       display: none;
     }

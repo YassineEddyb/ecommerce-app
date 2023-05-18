@@ -31,7 +31,7 @@ const SingUp = () => {
       localStorage.setItem("jwt", res.data.token);
       setIsAuth(true);
       window.location.reload();
-      navigate("/");
+      // navigate("/");
     } catch (err) {
       setError(err.response.data.message.error.split(":")[2]);
       // console.log(err.response.data.message.error);

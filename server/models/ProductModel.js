@@ -22,12 +22,13 @@ const productSchema = mongoose.Schema({
     min: 1,
     max: 5,
   },
-  categories: [String],
+  category: String,
+  gender: String,
   size: [String],
   createdAt: { type: Date, default: Date.now() },
 });
 
-productSchema.index({"$**": 'text'});
+productSchema.index({ "$**": "text" });
 
 const Product = mongoose.model("Product", productSchema);
 

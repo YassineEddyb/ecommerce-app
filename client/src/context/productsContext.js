@@ -7,6 +7,7 @@ const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
+  const [count, setCount] = useState(0)
   const { setIsLoading } = useContext(GlobalContext);
 
   useEffect(() => {
@@ -14,7 +15,8 @@ export const ProductProvider = ({ children }) => {
     const fetchProducts = async () => {
       try {
         const result = await axios.get("/api/products");
-        setProducts(result.data.products);
+        setProducts(result.data.data.products);
+        setCount(result.data.data.count);
         setIsLoading(false);
       } catch (err) {
         console.log(err);
@@ -25,7 +27,7 @@ export const ProductProvider = ({ children }) => {
   }, []);
 
   return (
-    <ProductContext.Provider value={{ products, setProducts }}>
+    <ProductContext.Provider value={{ products, setProducts, count, setCount }}>
       {children}
     </ProductContext.Provider>
   );

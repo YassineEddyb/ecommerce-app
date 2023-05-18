@@ -2,8 +2,18 @@
 
 .popular-products {
   background-color: $back-light;
-  width: 100%;
-  margin: auto;
+  // width: 100%;
+  // margin: auto;
+  .rec.rec-arrow {
+    background-color: $back-light;
+    &:hover,&:focus {
+      background-color: $main-color;
+    }
+  }
+
+  .rec.rec-arrow-active {
+    background-color: $back-light;
+  }
   h2 {
     color: $text-color;
     text-align: center;

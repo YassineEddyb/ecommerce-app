@@ -6,12 +6,23 @@ class ApiFeatures {
 
   paginate() {
     const page = parseInt(this.query.page) || 1;
-    const limit = parseInt(this.query.limit) || 20;
+    const limit = parseInt(this.query.limit) || 10;
 
     this.obj.skip((page - 1) * limit).limit(limit);
 
     return this;
   }
+
+  // search() {
+  //   let query = this.query.q;
+  //   if (query) {
+  //     this.obj.find([
+  //       {
+  //         $or: [{ title: { $regex: query } }],
+  //       },
+  //     ]);
+  //   }
+  // }
 
   sort() {
     const sort = this.query.sort || "createdAt";
@@ -25,7 +36,17 @@ class ApiFeatures {
     let category = this.query.category;
     if (category && this.obj.find) {
       category = category.split(",");
-      this.obj.find({ categories: { $in: category } });
+      this.obj.find({ category: { $in: category } });
+    }
+
+    return this;
+  }
+
+  gender() {
+    let gender = this.query.gender;
+    if (gender) {
+      gender = gender.split(",");
+      this.obj.find({gender: {$in: gender}});
     }
 
     return this;
@@ -35,7 +56,8 @@ class ApiFeatures {
     let size = this.query.size;
     if (size && this.obj.find) {
       size = size.split(",");
-      this.obj.find({ size: { $in: size } });
+      console.log(size);
+      this.obj.find({ size: {$in: size} });
     }
 
     return this;
