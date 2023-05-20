@@ -7,6 +7,7 @@ export const GlobalProvider = ({ children }) => {
   const [isAuth, setIsAuth] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [initLoading, setInitLoading] = useState(true);
+  const [sideBar, setSideBar] = useState(false);
 
   const handleResize = () => {
     setScreenWidth(window.innerWidth);
@@ -26,6 +27,8 @@ export const GlobalProvider = ({ children }) => {
         setIsLoading,
         initLoading,
         setInitLoading,
+        sideBar,
+        setSideBar,
       }}
     >
       {children}

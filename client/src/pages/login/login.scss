@@ -3,25 +3,25 @@
 .login-page {
   position: relative;
   margin: 5rem auto;
-  max-width: 600px;
+  max-width: 500px;
   flex-direction: row;
   width: 90%;
   border-radius: 1rem;
   background-color: $back-light;
   box-shadow: 1px 1px 40px 5px rgba(0, 0, 0, 0.11);
   padding: 4rem 0;
-
   h1 {
     text-align: center;
     margin-bottom: 2rem;
     font-size: 40px;
   }
 
-  .form {
-    max-width: 300px;
-    width: 90%;
+  .login-form {
+    width: 80%;
     height: 90%;
     margin: auto;
+    border: none;
+
     label {
       cursor: pointer;
     }

@@ -11,15 +11,13 @@ import { BiLogOutCircle } from "react-icons/bi";
 import UserContext from "../../context/userContext";
 import SideBarCart from "../SideBarCart/SideBarCart";
 import GlobalContext from "../../context/globalContext";
-import ProductContext from "../../context/productsContext";
 
 import CategoryList from "../categoryLIst/categoryList";
+import useCartSideBar from "../../hooks/useCartSideBar";
 
 const Header = () => {
   const { user, setUser } = useContext(UserContext);
-  const { isAuth, setIsAuth, setIsLoading } = useContext(GlobalContext);
-  const { setProducts } = useContext(ProductContext);
-  const [sideBar, setSideBar] = useState(false);
+  const { isAuth, setIsAuth, sideBar, setSideBar } = useContext(GlobalContext);
 
   const toggleSideBar = () => {
     setSideBar((prevState) => !prevState);

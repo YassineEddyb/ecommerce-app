@@ -25,17 +25,9 @@ function ProductCard({ item, shadow }) {
   return (
     <div className={`product ${shadow ? "shadow" : null}`}>
       <div className="image">
-        <div className="tools">
-          <div className="add-to-cart" onClick={addProductToCart}>
-            <FiShoppingCart />
-            <span>ADD TO CART</span>
-          </div>
-          <div className="icon">
-            <AiOutlineHeart />
-          </div>
-          <div className="icon">
-            <BiShowAlt />
-          </div>
+        <div className="add-to-cart" onClick={addProductToCart}>
+          <FiShoppingCart />
+          <span>ADD TO CART</span>
         </div>
         <Link to={"/product/" + item._id}>
           <img src={item.picture} alt={item.title} />

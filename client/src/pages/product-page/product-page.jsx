@@ -51,7 +51,7 @@ function ProductPage() {
           </div>
         </div>
       </div>
-      <PopularPorducts title="People Also Bay" />
+      <PopularPorducts title="People Also Buy" />
     </div>
   );
 }

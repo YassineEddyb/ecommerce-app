@@ -64,25 +64,31 @@ const SingUp = () => {
       {error ? <ErrorMsg msg={error} /> : null}
       <h1>Sign Up</h1>
       <form className="form">
-        <Input name="name" value={data.name} changeHandler={changeHandler} />
-        <Input name="email" value={data.email} changeHandler={changeHandler} />
+        <Input
+          name="name"
+          placeholder="Enter Your Name"
+          value={data.name}
+          changeHandler={changeHandler}
+        />
+        <Input
+          name="email"
+          placeholder="Enter Your Email"
+          value={data.email}
+          changeHandler={changeHandler}
+        />
         <Input
           className="pass"
           name="password"
+          placeholder="Enter Password"
           value={data.password}
           changeHandler={changeHandler}
         />
         <Input
           name="confirmPassword"
+          placeholder="Enter Password Confirm"
           pass
           value={data.confirmPassword}
           changeHandler={changeHandler}
-        />
-        <input
-          id="check"
-          className="check"
-          type="checkbox"
-          onClick={handleClick}
         />
         <Button value="Sign Up" clickHandler={handleSubmit} />
       </form>

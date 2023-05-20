@@ -3,7 +3,7 @@
 .signup-page {
   position: relative;
   margin: 5rem auto;
-  max-width: 600px;
+  max-width: 500px;
   flex-direction: row;
   width: 90%;
   border-radius: 1rem;
@@ -18,10 +18,10 @@
   }
 
   .form {
-    max-width: 300px;
-    width: 90%;
+    width: 80%;
     height: 90%;
     margin: auto;
+    border: none;
     label {
       cursor: pointer;
     }

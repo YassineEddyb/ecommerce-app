@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import "./login.scss";
 
 import axios from "../../utils/axiosConfig";
@@ -6,7 +6,6 @@ import Button from "../../components/button/button";
 import Input from "../../components/Input/input";
 
 import { useNavigate } from "react-router";
-import userContext from "../../context/userContext";
 import GlobalContext from "../../context/globalContext";
 import ErrorMsg from "../../components/ErrorMsg/ErrorMsg";
 
@@ -53,12 +52,18 @@ const Login = () => {
         <ErrorMsg msg="Error: email or password is not correct!" />
       ) : null}
       <h1>Log in</h1>
-      <form className="form">
-        <Input name="email" value={data.email} changeHandler={changeHandler} />
+      <form className="login-form">
+        <Input
+          name="email"
+          placeholder="Enter Your Email"
+          value={data.email}
+          changeHandler={changeHandler}
+        />
         <Input
           className="pass"
           name="password"
           value={data.password}
+          placeholder="Enter Your Password"
           changeHandler={changeHandler}
           visible={visible}
         />

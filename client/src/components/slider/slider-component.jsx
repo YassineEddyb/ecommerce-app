@@ -75,7 +75,7 @@ const Slider = () => {
       </div>
       {screenWidth < 958 ? (
         <div className="title-small">
-          <h2>BAY THIS NOW</h2>
+          <h2>BUY THIS NOW</h2>
           <h2>BECOME SHINING</h2>
           <p>large selection of men and women clothes at afordable prices</p>
           <Link className="link" to="/shop">
@@ -84,7 +84,7 @@ const Slider = () => {
         </div>
       ) : (
         <div className="title-large">
-          <h1>BAY THIS NOW</h1>
+          <h1>BUY THIS NOW</h1>
           <div className="button">
             <h1>BECOME</h1>
             <Link className="link" to="/shop">

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./SideBar.scss";
 
 import Button from "../button/button";
 import { Link } from "react-router-dom";
+import useCartSideBar from "../../hooks/useCartSideBar";
+import GlobalContext from "../../context/globalContext";
 
 let leftStyles = {
   left: "0",
@@ -29,6 +31,8 @@ let activeRightStyles = {
 };
 
 function SideBar({ sideBar, toggleSideBar, children, direction }) {
+  const { setSideBar } = useContext(GlobalContext);
+
   let styles;
   let activeStyles;
 
@@ -53,18 +57,20 @@ function SideBar({ sideBar, toggleSideBar, children, direction }) {
         onClick={toggleSideBar}
       />
       <div style={sideBar ? activeStyles : styles} className="side-bar">
-        <div className="list">
-          {children}
-        </div>
-        <Link to="/checkout"  style={{textDecoration: "none", backgroundColor: "transparent"}}>
-        <Button
-          className="btn"
-          value="Checkout"
-          styles={{
-            width: "80%",
-          }}
-        />
-      </Link>
+        <div className="list">{children}</div>
+        <Link
+          to="/checkout"
+          style={{ textDecoration: "none", backgroundColor: "transparent" }}
+          onClick={() => setSideBar(false)}
+        >
+          <Button
+            className="btn"
+            value="Checkout"
+            styles={{
+              width: "80%",
+            }}
+          />
+        </Link>
       </div>
     </div>
   );

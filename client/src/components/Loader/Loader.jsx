@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./Loader.scss";
 
 import ScaleLoader from "react-spinners/ScaleLoader";
@@ -14,7 +14,7 @@ const styles = {
 function Loader({ load }) {
   return (
     <div className="loader">
-          {load ? (
+      {load ? (
         <GridLoader color={"#51a767"} cssOverride={styles} size={15} />
       ) : (
         <ScaleLoader color={"#51a767"} cssOverride={styles} size={150} />
