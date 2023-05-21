@@ -13,7 +13,6 @@ import SideBarCart from "../SideBarCart/SideBarCart";
 import GlobalContext from "../../context/globalContext";
 
 import CategoryList from "../categoryLIst/categoryList";
-import useCartSideBar from "../../hooks/useCartSideBar";
 
 const Header = () => {
   const { user, setUser } = useContext(UserContext);

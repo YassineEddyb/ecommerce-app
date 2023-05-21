@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
 import "./App.css";
 import Footer from "./components/footer/footer";
@@ -17,7 +18,7 @@ import { UserProvider } from "./context/userContext";
 import ProtectedRoutes from "./utils/protectedRoutes";
 import HomeRedirect from "./utils/homeRedirect";
 import Loader from "./components/Loader/Loader";
-import Checkout from "./pages/checkout/checkout"
+import Checkout from "./pages/checkout/checkout";
 
 import GlobalContext from "./context/globalContext";
 
@@ -31,7 +32,7 @@ function App() {
           {initLoading ? (
             <Loader />
           ) : (
-            <Router>
+            <HashRouter>
               <Header />
               <Routes>
                 <Route path="/" element={<Home />} />
@@ -48,7 +49,7 @@ function App() {
                 </Route>
               </Routes>
               <Footer />
-            </Router>
+            </HashRouter>
           )}
         </UserProvider>
       </ProductProvider>
