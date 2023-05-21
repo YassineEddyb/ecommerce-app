@@ -25,23 +25,23 @@ function Filter(props) {
   const { setProducts, setCount } = useContext(ProductContext);
   const { setIsLoading } = useContext(GlobalContext);
   const [filters, setFilters] = useState({
-    hats: true,
-    "T-shirts": true,
-    shoes: true,
-    hoodies: true,
-    pants: true,
-    dress: true
+    hats: false,
+    "T-shirts": false,
+    shoes: false,
+    hoodies: false,
+    pants: false,
+    dress: false,
   });
   const [sizes, setSizes] = useState({
-    S: true,
-    M: true,
-    L: true,
-    XL: true,
+    S: false,
+    M: false,
+    L: false,
+    XL: false,
   });
   const [gender, setGender] = useState({
-    men: true,
-    women: true,
-  }) 
+    men: false,
+    women: false,
+  });
   const search = useLocation().search;
   const query = new URLSearchParams(search).get("q");
   const page = new URLSearchParams(search).get("page");
@@ -51,11 +51,13 @@ function Filter(props) {
     const fetchProducts = async () => {
       try {
         const res = await axios.get(
-          `/api/products?page=${page? page: 1}&q=${query ? query : ""}&price=${value[0]},${
-            value[1]
-          }&category=${getObjectasString(filters)}&size=${getObjectasString(
-            sizes
-          )}&gender=${gender.men? "men" : ""},${gender.women? "women": ""}`
+          `/api/products?page=${page ? page : 1}&q=${
+            query ? query : ""
+          }&price=${value[0]},${value[1]}&category=${getObjectasString(
+            filters
+          )}&size=${getObjectasString(sizes)}&gender=${
+            gender.men ? "men" : ""
+          },${gender.women ? "women" : ""}`
         );
         setProducts(res.data.data.products);
         setCount(res.data.data.count);
@@ -81,7 +83,7 @@ function Filter(props) {
   const handleGender = (e) => {
     const name = e.target.id;
     setGender({ ...gender, [name]: !gender[name] });
-  }
+  };
 
   const rangeSelector = (event, newValue) => {
     setValue(newValue);
@@ -93,11 +95,7 @@ function Filter(props) {
       <div className="gender">
         <h4 className="title">Gender</h4>
         <Checkbox handleChange={handleGender} className="option" name="men" />
-        <Checkbox
-          handleChange={handleGender}
-          className="option"
-          name="women"
-        />
+        <Checkbox handleChange={handleGender} className="option" name="women" />
       </div>
       <div className="categories-filter">
         <h4 className="title">Categories</h4>
