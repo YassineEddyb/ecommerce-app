@@ -41,7 +41,7 @@ const Login = () => {
       window.location.reload();
       navigate("/");
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setError(true);
     }
   };

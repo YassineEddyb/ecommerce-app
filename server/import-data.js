@@ -329,26 +329,26 @@ mongoose
     useNewUrlParser: true,
   })
   .then((result) => {
-    console.log("connected to mongodb");
+    // console.log("connected to mongodb");
   })
   .catch((err) => {
-    console.log(err);
+    // console.log(err);
   });
 
 const importData = async () => {
   try {
     await Product.create(tours);
-    console.log("data successfully loaded");
+    // console.log("data successfully loaded");
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 };
 const deleteData = async () => {
   try {
     await Product.deleteMany();
-    console.log("data successfully deleted");
+    // console.log("data successfully deleted");
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 };
 

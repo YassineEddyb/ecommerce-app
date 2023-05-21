@@ -46,7 +46,7 @@ class ApiFeatures {
     let gender = this.query.gender;
     if (gender) {
       gender = gender.split(",");
-      this.obj.find({gender: {$in: gender}});
+      this.obj.find({ gender: { $in: gender } });
     }
 
     return this;
@@ -56,8 +56,8 @@ class ApiFeatures {
     let size = this.query.size;
     if (size && this.obj.find) {
       size = size.split(",");
-      console.log(size);
-      this.obj.find({ size: {$in: size} });
+      // console.log(size);
+      this.obj.find({ size: { $in: size } });
     }
 
     return this;

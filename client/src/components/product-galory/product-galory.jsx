@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./product-galory.scss";
 
-function ProductGalory({ images }) {
-  const [image, setImage] = useState(images[0]);
+function ProductGalory({ picture, images }) {
+  const [image, setImage] = useState(picture);
 
   return (
     <div className="product-galory">

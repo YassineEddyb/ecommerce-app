@@ -18,7 +18,7 @@ export const UserProvider = ({ children }) => {
           },
         });
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     updateUser();
@@ -37,7 +37,7 @@ export const UserProvider = ({ children }) => {
         setIsAuth(true);
         setInitLoading(false);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         setInitLoading(false);
       }
     };

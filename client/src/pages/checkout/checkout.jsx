@@ -25,7 +25,7 @@ function Checkout() {
         const res = await axios.post("/api/payment", { cart: user.cart || [] });
         setClientSecret(res.data.clientSecret);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
 

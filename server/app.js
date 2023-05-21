@@ -42,9 +42,9 @@ app.use(errorHandler);
 mongoose
   .connect(db)
   .then((result) => {
-    console.log("database connected");
+    // console.log("database connected");
     app.listen(port);
   })
   .catch((err) => {
-    console.log(err.message);
+    // console.log(err.message);
   });

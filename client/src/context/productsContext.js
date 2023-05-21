@@ -7,7 +7,7 @@ const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
   const { setIsLoading } = useContext(GlobalContext);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export const ProductProvider = ({ children }) => {
         setCount(result.data.data.count);
         setIsLoading(false);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         setIsLoading(false);
       }
     };

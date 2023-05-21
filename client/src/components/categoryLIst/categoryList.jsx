@@ -29,13 +29,15 @@ function CategoryList() {
     const fetchProducts = async () => {
       try {
         const result = await axios.get(
-          `/api/products?category=${name !== "men" && name !== "women" ? name: "" }&gender=${name === "women" || name === "men"? name : ""}`
+          `/api/products?category=${
+            name !== "men" && name !== "women" ? name : ""
+          }&gender=${name === "women" || name === "men" ? name : ""}`
         );
         setProducts(result.data.data.products);
         setCount(result.data.data.count);
         setIsLoading(false);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
         setIsLoading(false);
       }
     };

@@ -23,7 +23,7 @@ export const CartProvider = ({ children }) => {
         );
         setUser(res.data.user);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     if (cart?.length > 0) updateCart();

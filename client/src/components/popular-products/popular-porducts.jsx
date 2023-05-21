@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
 import "./popular-products.scss";
 
-import Carousel from 'react-elastic-carousel';
+import Carousel from "react-elastic-carousel";
 import "react-multi-carousel/lib/styles.css";
 
 import ProductCard from "../product-card/product-card";
-import axios from "../../utils/axiosConfig"
+import axios from "../../utils/axiosConfig";
 
 const responsive = [
   { width: 1, itemsToShow: 1 },
@@ -13,7 +13,7 @@ const responsive = [
   { width: 850, itemsToShow: 4 },
   { width: 1150, itemsToShow: 5, itemsToScroll: 2 },
   { width: 1450, itemsToShow: 6 },
-  { width: 1750, itemsToShow: 8 }
+  { width: 1750, itemsToShow: 8 },
 ];
 
 function PopularPorducts({ title }) {
@@ -35,10 +35,10 @@ function PopularPorducts({ title }) {
         const res = await axios.get("api/products/popularProducts");
         setProducts(res.data.products);
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
-    }
-    fetchProducts()
+    };
+    fetchProducts();
   }, [isMobile]);
 
   return (

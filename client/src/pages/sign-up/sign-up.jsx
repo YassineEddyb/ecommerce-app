@@ -34,7 +34,7 @@ const SingUp = () => {
       // navigate("/");
     } catch (err) {
       setError(err.response.data.message.error.split(":")[2]);
-      // console.log(err.response.data.message.error);
+      // // console.log(err.response.data.message.error);
     }
   };
 
@@ -42,7 +42,7 @@ const SingUp = () => {
     //   const el = document.querySelector(".pass");
     //   // if (!visible) el.type = "text";
     //   // else el.type = "password";
-    //   console.log(e);
+    //   // console.log(e);
     //   // setVisible(!visible);
   };
 
@@ -55,7 +55,7 @@ const SingUp = () => {
   //     });
   //     localStorage.setItem("jwt", res.data.token);
   //   } catch (err) {
-  //     console.log(err.response.data.message);
+  //     // console.log(err.response.data.message);
   //   }
   // };
 
