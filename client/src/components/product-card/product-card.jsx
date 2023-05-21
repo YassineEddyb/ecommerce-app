@@ -6,9 +6,11 @@ import { FiShoppingCart } from "react-icons/fi";
 import { BiShowAlt } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import UserContext from "../../context/userContext";
+import GlobalContext from "../../context/globalContext";
 
 function ProductCard({ item, shadow }) {
   const { user, setUser } = useContext(UserContext);
+  const { setSideBar } = useContext(GlobalContext);
   let el;
 
   const addProductToCart = async () => {
@@ -25,7 +27,13 @@ function ProductCard({ item, shadow }) {
   return (
     <div className={`product ${shadow ? "shadow" : null}`}>
       <div className="image">
-        <div className="add-to-cart" onClick={addProductToCart}>
+        <div
+          className="add-to-cart"
+          onClick={() => {
+            addProductToCart();
+            setSideBar(true);
+          }}
+        >
           <FiShoppingCart />
           <span>ADD TO CART</span>
         </div>

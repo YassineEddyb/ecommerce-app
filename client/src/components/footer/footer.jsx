@@ -19,7 +19,7 @@ const Footer = () => {
         </div>
         <div className="info">
           <MdEmail />
-          <p>contactUs@gmail.com</p>
+          <p>example@contact.com</p>
         </div>
         <div className="info">
           <BsFillTelephoneFill />
