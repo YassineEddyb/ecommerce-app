@@ -48,9 +48,25 @@
         }
       }
     }
-    img {
+    .product-image {
       cursor: pointer;
       max-width: 100%;
+
+      &:hover {
+        animation: fade 0.4s;
+      }
+    }
+
+    @keyframes fade {
+      0% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.7;
+      }
+      100% {
+        opacity: 1;
+      }
     }
   }
   .title {

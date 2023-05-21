@@ -1,9 +1,8 @@
 import React, { useState, useContext } from "react";
 import "./product-card.scss";
 
-import { AiOutlineHeart, AiFillStar } from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 import { FiShoppingCart } from "react-icons/fi";
-import { BiShowAlt } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import UserContext from "../../context/userContext";
 import GlobalContext from "../../context/globalContext";
@@ -11,6 +10,7 @@ import GlobalContext from "../../context/globalContext";
 function ProductCard({ item, shadow }) {
   const { user, setUser } = useContext(UserContext);
   const { setSideBar } = useContext(GlobalContext);
+  const [image, setImage] = useState(item.picture);
   let el;
 
   const addProductToCart = async () => {
@@ -25,7 +25,11 @@ function ProductCard({ item, shadow }) {
   };
 
   return (
-    <div className={`product ${shadow ? "shadow" : null}`}>
+    <div
+      className={`product ${shadow ? "shadow" : null}`}
+      onMouseEnter={() => setTimeout(() => setImage(item.images[1]), 100)}
+      onMouseLeave={() => setTimeout(setImage(item.picture), 100)}
+    >
       <div className="image">
         <div
           className="add-to-cart"
@@ -38,7 +42,7 @@ function ProductCard({ item, shadow }) {
           <span>ADD TO CART</span>
         </div>
         <Link to={"/product/" + item._id}>
-          <img src={item.picture} alt={item.title} />
+          <img className="product-image" src={image} alt={item.title} />
         </Link>
       </div>
       <span className="title">
