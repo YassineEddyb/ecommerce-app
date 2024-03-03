@@ -32,7 +32,7 @@ const Header = () => {
     <>
       <header className="header">
         <Link className="logo" to="/">
-          <h1>STYILO</h1>
+          <h1>STYLO</h1>
         </Link>
         <CategoryList />
         <nav>
